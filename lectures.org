@@ -1,0 +1,32 @@
+* Grades 5-6
+  Daily classes from 3:00--3:50 p.m.
+** <2025-06-16 Mon>
+   Python code for substitution cipher:
+   #+begin_src python
+     import random
+
+     letters = list('abcdefghijklmnopqrstuvwxyz')
+     letters_shuffled = letters.copy()
+     random.shuffle(letters_cipher)
+
+     print(letters)
+     letters_cipher
+
+     cipher = {}
+     for l1, l2 in zip(letters, letters_cipher):
+         cipher[l1] = l2
+
+     def substitution_cipher(plaintext, cipher):
+         plaintext = plaintext.lower()
+         ciphertext = ""
+
+         for letter in plaintext:
+             if letter != " ":
+                 ciphertext += cipher[letter]
+             else:
+                 ciphertext += letter
+
+         print(ciphertext)
+
+     substitution_cipher("This is my message", cipher)
+   #+end_src
