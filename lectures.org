@@ -7,7 +7,7 @@
   Lectures for mathematics summer gifted program.
 ** <2025-06-16 Mon>
    - Python code for substitution cipher:
-   #+begin_src python :results output
+   #+begin_src python :results output :session yes
      import random
 
      letters = list('abcdefghijklmnopqrstuvwxyz')
@@ -54,14 +54,67 @@
    #+end_src
 
    #+RESULTS:
-   : ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-   : ['m', 'l', 'a', 'g', 'j', 'd', 'b', 'x', 'y', 's', 'e', 'n', 'h', 'o', 'v', 'k', 'c', 't', 'w', 'p', 'r', 'u', 'f', 'z', 'i', 'q']
+   : Message: This is my message.
+   : Ciphertext: fzty ty ce cxyypbx.
+   : Plaintext: this is my message.
 
    - [[https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html][Frequency diagram]] for letters of the English language.
 
    - *Example*: The following message has been encrypted using a substitution
      cipher: 'ykbk nk vbk, og pijlyvggcg, nktz qobaogov.'
      Decrypt this message.
+
+     /Answer/: The frequency diagram above gives us some clues as to what each
+     letter could represent.  In particular, since ~e~ is the most common letter
+     of the English alphabet and ~g~ and ~k~ are frequent letters in the above
+     message, we can try to replace either of these letters (but not both!) with
+     ~e~:
+     #+begin_src python :session yes
+       ciphertext = 'ykbk nk vbk, og pijlyvggcg, nktz qobaogov'
+       decrypt2 = {'k':'e'} # Try replacing k with e
+       substitution_decrypt(ciphertext, decrypt2)
+     #+end_src
+
+     #+RESULTS:
+     : yebe ne vbe, og pijlyvggcg, netz qobaogov
+
+     Since the first word becomes ~yebe~, we now look for a four-letter word in
+     English that has an ~e~ in the second and last entries.  One example, after
+     some trial and error, is ~here~.  So now we try replacing ~y~ with ~h~ and
+     ~b~ with ~r~:
+     #+begin_src python :session yes
+       decrypt2['y'] = 'h'
+       decrypt2['b'] = 'r'
+       substitution_decrypt(ciphertext, decrypt2)
+     #+end_src
+
+     #+RESULTS:
+     : here ne vre, og pijlhvggcg, netz qoraogov
+
+     Now the first phrase in this message looks like it could be "here we are",
+     and so we continue with these substitutions:
+     #+begin_src python :session yes
+       decrypt2['n'] = 'w'
+       decrypt2['v'] = 'a'
+       substitution_decrypt(ciphertext, decrypt2)
+     #+end_src
+
+     #+RESULTS:
+     : here we are, og pijlhaggcg, wetz qoraogoa
+
+     A natural word that follows the phrase "here we are" is "in", so once again
+     we add those letters to our key:
+     #+begin_src python :session yes
+       decrypt2['o'] = 'i'
+       decrypt2['g'] = 'n'
+       substitution_decrypt(ciphertext, decrypt2)
+     #+end_src
+
+     #+RESULTS:
+     : here we are, in pijlhanncn, wetz qirainia
+
+     A little bit more trial and error gives the (likely) decrypted message:
+     "here we are, in Buckhannon, West Virginia".
 * Discrete mathematics
   :PROPERTIES:
   :EXPORT_FILE_NAME: discrete
