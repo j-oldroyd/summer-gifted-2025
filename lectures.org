@@ -55,7 +55,7 @@
   :END:
   Lectures for computer science summer gifted program.
 ** <2025-06-16 Mon>
-   Consider the problem of counting all multiples of $3$ or $5$ located below
+   - Consider the problem of counting all multiples of $3$ or $5$ located below
    $1000$.  We'd like to solve this with a computer, but first we need to
    translate this into a form our computer program (Python) can understand.
    Therefore, it's not a bad idea to follow the workflow below:
@@ -81,8 +81,7 @@
    4. Compute $n_1 + n_2 - n_3$.
 
 
-   For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the $n$th
-   *Fibonacci number* by the equations
-   $$F_0 = 1, F_1 = 2\text{ and } F_n = F_{n-1}+F_{n-2}.$$
-   Find the sum of the *even-valued* Fibonacci numbers that do not exceed
-   $4000000$.
+   - For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the $n^\text{th}$
+   *Fibonacci number* by the equations $$F_0 = 1, F_1 = 2\text{ and } F_n =
+   F_{n-1}+F_{n-2}.$$ Find the sum of the *even-valued* Fibonacci numbers that
+   do not exceed $4000000$.
