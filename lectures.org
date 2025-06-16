@@ -14,9 +14,6 @@
      letters_cipher = letters.copy()
      random.shuffle(letters_cipher)
 
-     print(letters)
-     print(letters_cipher)
-
      encryption_key = {}
      decryption_key = {}
      for l1, l2 in zip(letters, letters_cipher):

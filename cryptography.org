@@ -1,4 +1,4 @@
-# Created 2025-06-16 Mon 12:39
+# Created 2025-06-16 Mon 12:51
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
@@ -10,9 +10,6 @@ Lectures for mathematics summer gifted program.
   letters = list('abcdefghijklmnopqrstuvwxyz')
   letters_cipher = letters.copy()
   random.shuffle(letters_cipher)
-
-  print(letters)
-  print(letters_cipher)
 
   encryption_key = {}
   decryption_key = {}
