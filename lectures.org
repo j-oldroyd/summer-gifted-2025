@@ -1,3 +1,5 @@
+#+TITLE: Summer Gifted Notes 2025
+#+AUTHOR: Jesse Oldroyd
 * Cryptography
   Lectures for mathematics summer gifted program.
 ** <2025-06-16 Mon>
