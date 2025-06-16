@@ -1,4 +1,4 @@
-# Created 2025-06-16 Mon 11:01
+# Created 2025-06-16 Mon 11:04
 #+title: Discrete mathematics
 #+author: Jesse Oldroyd
 Lectures for computer science summer gifted program.
@@ -29,8 +29,8 @@ algorithm:
 4. Compute $n_1 + n_2 - n_3$.
 
 
-- For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the $n^\text{th}$
-*Fibonacci number* by the equations
+- For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the value of
+  the $n^\text{th}$ *Fibonacci number* by the equations
 
 $$F_0 = 1, F_1 = 2\text{ and } F_n = F_{n-1}+F_{n-2}.$$
 

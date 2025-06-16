@@ -81,8 +81,8 @@
    4. Compute $n_1 + n_2 - n_3$.
 
 
-   - For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the $n^\text{th}$
-   *Fibonacci number* by the equations
+   - For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the value of
+     the $n^\text{th}$ *Fibonacci number* by the equations
 
    $$F_0 = 1, F_1 = 2\text{ and } F_n = F_{n-1}+F_{n-2}.$$
 
