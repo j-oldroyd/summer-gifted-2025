@@ -1,4 +1,4 @@
-# Created 2025-06-16 Mon 10:57
+# Created 2025-06-16 Mon 11:01
 #+title: Discrete mathematics
 #+author: Jesse Oldroyd
 Lectures for computer science summer gifted program.
@@ -30,6 +30,9 @@ algorithm:
 
 
 - For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the $n^\text{th}$
-*Fibonacci number* by the equations $$F_0 = 1, F_1 = 2\text{ and } F_n =
-   F_{n-1}+F_{n-2}.$$ Find the sum of the *even-valued* Fibonacci numbers that
+*Fibonacci number* by the equations
+
+$$F_0 = 1, F_1 = 2\text{ and } F_n = F_{n-1}+F_{n-2}.$$
+
+Find the sum of the *even-valued* Fibonacci numbers that
 do not exceed $4000000$.
