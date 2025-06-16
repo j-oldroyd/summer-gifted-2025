@@ -7,7 +7,7 @@
   Lectures for mathematics summer gifted program.
 ** <2025-06-16 Mon>
    - Python code for substitution cipher:
-   #+begin_src python :results output :session yes
+   #+begin_src python :results output :session yes :exports both
      import random
 
      letters = list('abcdefghijklmnopqrstuvwxyz')
@@ -69,7 +69,7 @@
      of the English alphabet and ~g~ and ~k~ are frequent letters in the above
      message, we can try to replace either of these letters (but not both!) with
      ~e~:
-     #+begin_src python :session yes
+     #+begin_src python :session yes :exports both
        ciphertext = 'ykbk nk vbk, og pijlyvggcg, nktz qobaogov'
        decrypt2 = {'k':'e'} # Try replacing k with e
        substitution_decrypt(ciphertext, decrypt2)
@@ -82,7 +82,7 @@
      English that has an ~e~ in the second and last entries.  One example, after
      some trial and error, is ~here~.  So now we try replacing ~y~ with ~h~ and
      ~b~ with ~r~:
-     #+begin_src python :session yes
+     #+begin_src python :session yes :exports both
        decrypt2['y'] = 'h'
        decrypt2['b'] = 'r'
        substitution_decrypt(ciphertext, decrypt2)
@@ -93,7 +93,7 @@
 
      Now the first phrase in this message looks like it could be "here we are",
      and so we continue with these substitutions:
-     #+begin_src python :session yes
+     #+begin_src python :session yes :exports both
        decrypt2['n'] = 'w'
        decrypt2['v'] = 'a'
        substitution_decrypt(ciphertext, decrypt2)
@@ -104,7 +104,7 @@
 
      A natural word that follows the phrase "here we are" is "in", so once again
      we add those letters to our key:
-     #+begin_src python :session yes
+     #+begin_src python :session yes :exports both
        decrypt2['o'] = 'i'
        decrypt2['g'] = 'n'
        substitution_decrypt(ciphertext, decrypt2)
