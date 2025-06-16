@@ -1,0 +1,36 @@
+# Created 2025-06-15 Sun 20:40
+#+title: Cryptography
+#+author: Jesse Oldroyd
+Lectures for mathematics summer gifted program.
+* <2025-06-16 Mon>
+Python code for substitution cipher:
+#+begin_src python :results output
+  import random
+
+  letters = list('abcdefghijklmnopqrstuvwxyz')
+  letters_cipher = letters.copy()
+  random.shuffle(letters_cipher)
+
+  print(letters)
+  print(letters_cipher)
+
+  cipher = {}
+  for l1, l2 in zip(letters, letters_cipher):
+      cipher[l1] = l2
+
+  def substitution_encrypt(plaintext, cipher):
+      plaintext = plaintext.lower()
+      ciphertext = ""
+
+      for letter in plaintext:
+          if letter.isalpha():
+              ciphertext += cipher[letter]
+          else:
+              ciphertext += letter
+
+      return ciphertext
+
+  message = "This is my message."
+
+  encrypted_message = substitution_encrypt(message, cipher)
+#+end_src

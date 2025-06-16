@@ -1,0 +1,29 @@
+# Created 2025-06-15 Sun 20:41
+#+title: Discrete mathematics
+#+author: Jesse Oldroyd
+Lectures for computer science summer gifted program.
+* <2025-06-16 Mon>
+Consider the problem of counting all multiples of $3$ or $5$ located below
+$1000$.  We'd like to solve this with a computer, but first we need to
+translate this into a form our computer program (Python) can understand.
+Therefore, it's not a bad idea to follow the workflow below:
+1. If the problem is too complicated, try to solve a simpler version of the
+   problem.  Try multiple versions until you're confident you have a strategy
+   that will work in general.  In particular, you want to make sure your
+   strategy can appropriate deal with any /edge cases/.
+2. Try writing down the exact steps of your solution in good detail.  You
+   will need a concrete description of your solution (i.e., an *algorithm*)
+   to implement in your program.
+3. Convert each step of your algorithm into an appropriate section of
+   computer code.  If you find this difficult to do at a particular step, it
+   might mean you need to break this step into several simpler steps.
+
+For the previous problem of counting multiples, here is one potential
+algorithm:
+1. Count all the multiples of $3$ that are below $1000$.  Call this number
+   $n_1$.
+2. Count all the multiples of $5$ that are below $1000$.  Call this number
+   $n_2$.
+3. Count all the multiples of $3$ and $5$ that are below $1000$.  Call this
+   number $n_3$.
+4. Compute $n_1 + n_2 - n_3$.
