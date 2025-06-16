@@ -115,6 +115,16 @@
 
      A little bit more trial and error gives the (likely) decrypted message:
      "here we are, in Buckhannon, West Virginia".
+** <2025-06-17 Tue>
+   A *Caesar cipher* is an ancient cryptographic technique that represents a
+   special case of the substitution cipher mentioned above.  Also called a
+   /shift cipher/, this cipher simply shifts each letter of the alphabet down by
+   a certain amount:
+   | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z |
+   | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | a | b | c |
+
+   The above table is an example of a ~ROT3~ Caesar cipher since each letter was
+   shifted three letters along the alphabet.
 * Discrete mathematics
   :PROPERTIES:
   :EXPORT_FILE_NAME: discrete

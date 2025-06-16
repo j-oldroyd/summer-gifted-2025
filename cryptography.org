@@ -1,10 +1,10 @@
-# Created 2025-06-16 Mon 12:51
+# Created 2025-06-16 Mon 17:32
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
 * <2025-06-16 Mon>
 - Python code for substitution cipher:
-#+begin_src python :results output
+#+begin_src python :results output :session yes
   import random
 
   letters = list('abcdefghijklmnopqrstuvwxyz')
@@ -55,3 +55,53 @@ Lectures for mathematics summer gifted program.
 - *Example*: The following message has been encrypted using a substitution
   cipher: 'ykbk nk vbk, og pijlyvggcg, nktz qobaogov.'
   Decrypt this message.
+
+  /Answer/: The frequency diagram above gives us some clues as to what each
+  letter could represent.  In particular, since ~e~ is the most common letter
+  of the English alphabet and ~g~ and ~k~ are frequent letters in the above
+  message, we can try to replace either of these letters (but not both!) with
+  ~e~:
+  #+begin_src python :session yes
+    ciphertext = 'ykbk nk vbk, og pijlyvggcg, nktz qobaogov'
+    decrypt2 = {'k':'e'} # Try replacing k with e
+    substitution_decrypt(ciphertext, decrypt2)
+  #+end_src
+
+  Since the first word becomes ~yebe~, we now look for a four-letter word in
+  English that has an ~e~ in the second and last entries.  One example, after
+  some trial and error, is ~here~.  So now we try replacing ~y~ with ~h~ and
+  ~b~ with ~r~:
+  #+begin_src python :session yes
+    decrypt2['y'] = 'h'
+    decrypt2['b'] = 'r'
+    substitution_decrypt(ciphertext, decrypt2)
+  #+end_src
+
+  Now the first phrase in this message looks like it could be "here we are",
+  and so we continue with these substitutions:
+  #+begin_src python :session yes
+    decrypt2['n'] = 'w'
+    decrypt2['v'] = 'a'
+    substitution_decrypt(ciphertext, decrypt2)
+  #+end_src
+
+  A natural word that follows the phrase "here we are" is "in", so once again
+  we add those letters to our key:
+  #+begin_src python :session yes
+    decrypt2['o'] = 'i'
+    decrypt2['g'] = 'n'
+    substitution_decrypt(ciphertext, decrypt2)
+  #+end_src
+
+  A little bit more trial and error gives the (likely) decrypted message:
+  "here we are, in Buckhannon, West Virginia".
+* <2025-06-17 Tue>
+A *Caesar cipher* is an ancient cryptographic technique that represents a
+special case of the substitution cipher mentioned above.  Also called a
+/shift cipher/, this cipher simply shifts each letter of the alphabet down by
+a certain amount:
+| a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z |
+| d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | a | b | c |
+
+The above table is an example of a ~ROT3~ Caesar cipher since each letter was
+shifted three letters along the alphabet.
