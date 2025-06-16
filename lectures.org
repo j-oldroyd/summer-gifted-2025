@@ -62,7 +62,7 @@
 
    - [[https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html][Frequency diagram]] for letters of the English language.
 
-   - **Example**: The following message has been encrypted using a substitution
+   - *Example*: The following message has been encrypted using a substitution
      cipher: 'ykbk nk vbk, og pijlyvggcg, nktz qobaogov.'
      Decrypt this message.
 * Discrete mathematics
