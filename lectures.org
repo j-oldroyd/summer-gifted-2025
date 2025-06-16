@@ -1,9 +1,12 @@
 #+TITLE: Summer Gifted Notes 2025
 #+AUTHOR: Jesse Oldroyd
 * Cryptography
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: cryptography
+  :END:
   Lectures for mathematics summer gifted program.
 ** <2025-06-16 Mon>
-   Python code for substitution cipher:
+   - Python code for substitution cipher:
    #+begin_src python :results output
      import random
 
@@ -14,17 +17,18 @@
      print(letters)
      print(letters_cipher)
 
-     cipher = {}
+     encryption_key = {}
+     decryption_key = {}
      for l1, l2 in zip(letters, letters_cipher):
-         cipher[l1] = l2
+         encryption_key[l1] = l2
 
-     def substitution_encrypt(plaintext, cipher):
+     def substitution_encrypt(plaintext, encryption_key):
          plaintext = plaintext.lower()
          ciphertext = ""
 
          for letter in plaintext:
              if letter.isalpha():
-                 ciphertext += cipher[letter]
+                 ciphertext += encryption_key[letter]
              else:
                  ciphertext += letter
 
@@ -32,9 +36,23 @@
 
      message = "This is my message."
 
-     encrypted_message = substitution_encrypt(message, cipher)
+     encrypted_message = substitution_encrypt(message, encryption_key)
+
+     print(f"Plaintext:\t {message}")
+     print(f"Ciphertext: {encrypted_message}")
    #+end_src
+
+   #+RESULTS:
+   : ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+   : ['g', 'a', 'e', 's', 'r', 'c', 'w', 'j', 'k', 'm', 'y', 'v', 'l', 'z', 't', 'f', 'p', 'x', 'n', 'd', 'h', 'i', 'o', 'u', 'q', 'b']
+   : Plaintext:	 This is my message.
+   : Ciphertext: djkn kn lq lrnngwr.
+
+   [[https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html][Frequency diagram]] for letters of the English langauge.
 * Discrete mathematics
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: discrete
+  :END:
   Lectures for computer science summer gifted program.
 ** <2025-06-16 Mon>
    Consider the problem of counting all multiples of $3$ or $5$ located below
@@ -61,3 +79,10 @@
    3. Count all the multiples of $3$ and $5$ that are below $1000$.  Call this
       number $n_3$.
    4. Compute $n_1 + n_2 - n_3$.
+
+
+   For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the $n$th
+   *Fibonacci number* by the equations
+   $$F_0 = 1, F_1 = 2\text{ and } F_n = F_{n-1}+F_{n-2}.$$
+   Find the sum of the *even-valued* Fibonacci numbers that do not exceed
+   $4000000$.

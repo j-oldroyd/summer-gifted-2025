@@ -1,9 +1,9 @@
-# Created 2025-06-15 Sun 20:40
+# Created 2025-06-16 Mon 10:52
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
 * <2025-06-16 Mon>
-Python code for substitution cipher:
+- Python code for substitution cipher:
 #+begin_src python :results output
   import random
 
@@ -14,17 +14,18 @@ Python code for substitution cipher:
   print(letters)
   print(letters_cipher)
 
-  cipher = {}
+  encryption_key = {}
+  decryption_key = {}
   for l1, l2 in zip(letters, letters_cipher):
-      cipher[l1] = l2
+      encryption_key[l1] = l2
 
-  def substitution_encrypt(plaintext, cipher):
+  def substitution_encrypt(plaintext, encryption_key):
       plaintext = plaintext.lower()
       ciphertext = ""
 
       for letter in plaintext:
           if letter.isalpha():
-              ciphertext += cipher[letter]
+              ciphertext += encryption_key[letter]
           else:
               ciphertext += letter
 
@@ -32,5 +33,10 @@ Python code for substitution cipher:
 
   message = "This is my message."
 
-  encrypted_message = substitution_encrypt(message, cipher)
+  encrypted_message = substitution_encrypt(message, encryption_key)
+
+  print(f"Plaintext:\t {message}")
+  print(f"Ciphertext: {encrypted_message}")
 #+end_src
+
+[[https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html][Frequency diagram]] for letters of the English langauge.

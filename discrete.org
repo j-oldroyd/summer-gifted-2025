@@ -1,4 +1,4 @@
-# Created 2025-06-15 Sun 20:41
+# Created 2025-06-16 Mon 10:52
 #+title: Discrete mathematics
 #+author: Jesse Oldroyd
 Lectures for computer science summer gifted program.
@@ -27,3 +27,10 @@ algorithm:
 3. Count all the multiples of $3$ and $5$ that are below $1000$.  Call this
    number $n_3$.
 4. Compute $n_1 + n_2 - n_3$.
+
+
+For another problem (also taken from [[https://projecteuler.net/][Project Euler]]), define the $n$th
+*Fibonacci number* by the equations
+$$F_0 = 1, F_1 = 2\text{ and } F_n = F_{n-1}+F_{n-2}.$$
+Find the sum of the *even-valued* Fibonacci numbers that do not exceed
+$4000000$.
