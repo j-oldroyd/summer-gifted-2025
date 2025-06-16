@@ -125,6 +125,76 @@
 
    The above table is an example of a ~ROT3~ Caesar cipher since each letter was
    shifted three letters along the alphabet.
+
+   *Example*: Use the ~ROT3~ cipher above to encrypt the message ~Picard is
+    better than Kirk.~  What Caesar cipher is the decryption key for the ~ROT3~
+    cipher?
+
+   *Example*: The Caesar cipher is also vulnerable to frequency analysis just
+    like the substitution cipher is.  Using this, try to decrypt the following
+    message encrypted using the Caesar cipher:
+    #+begin_src python :exports results
+      letters = list('abcdefghijklmnopqrstuvwxyz')
+      letters_rotated = []
+      for j in range(26):
+          new_letter_pos = (j+15)%26
+          letters_rotated.append(letters[new_letter_pos])
+
+      message = "Is anyone even able to figure out this message?  I'm not sure."
+
+      encryption_key = {}
+      decryption_key = {}
+      for l1, l2 in zip(letters, letters_rotated):
+          encryption_key[l1] = l2
+          decryption_key[l2] = l1
+
+      def substitution_encrypt(plaintext, encryption_key):
+          plaintext = plaintext.lower()
+          ciphertext = ""
+
+          for letter in plaintext:
+              if letter in encryption_key.keys():
+                  ciphertext += encryption_key[letter]
+              else:
+                  ciphertext += letter
+
+          return ciphertext
+
+      def substitution_decrypt(ciphertext, decryption_key):
+          ciphertext = ciphertext.lower()
+          plaintext = ""
+
+          for letter in ciphertext:
+              if letter in decryption_key.keys():
+                  plaintext += decryption_key[letter]
+              else:
+                  plaintext += letter
+
+          return plaintext
+
+      print(substitution_encrypt(message, encryption_key))
+    #+end_src
+
+    Part of the reason the Caesar cipher is so easy to crack, like any other
+    substitution cipher, is because there is a one-to-one correspondence between
+    letters before and after encryption.  One way to address this is to use a
+    combination of Caesar ciphers as in the Vigenere cipher.  Such a cipher
+    makes use of a table like the following to encrypt a message: [[https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher#/media/File:Vigen%C3%A8re_square_shading.svg][Vigenere
+    cipher]].
+
+    This encryption scheme involves first choosing a /keyword/ and then using
+    the keyword to determine the corresponding encryption.  For example, the
+    message ~I'M THE BEST AT USING MAKING SECRETS~ with the keyword ~CATS~ would
+    encrypt to ~KMMZGBXKCAMECKBFISYUTEMK~.  The encryption process works by
+    selecting a row of the above table using an appropriate letter from the
+    keyword and a column using the corresponding letter of the plaintext to
+    produce the encrypted letter.  The decryption process works by choosing a
+    row of the table by using the keyword, following along the row until you hit
+    the ciphertext letter, and then using the column to determine the plaintext
+    letter.
+
+    *Example*: using the Vigenere cipher with the keyword ~BAD~, encrypt the
+     plaintext ~WHOYOUGONNACALL~ and decrypt the ciphertext ~HOVFAKBWNT~.
 * Discrete mathematics
   :PROPERTIES:
   :EXPORT_FILE_NAME: discrete
@@ -164,3 +234,32 @@
 
    Find the sum of the *even-valued* Fibonacci numbers that
    do not exceed $4000000$.
+** <2025-06-17 Tue>
+   Number theory is the study of the set of natural numbers $\mathbb{N}$, which
+   for us is just the set of nonnegative whole numbers.  Since the prime numbers
+   are the "building blocks" of every positive integer, number theory pays
+   special attention to these numbers and the related concept of /divisibility/.
+   In particular, we say that $j$ *divides* $k$ if there is a whole number $m$
+   such that $k = mj$.  For instance, $2\mid 4$ and $15\mid60$ but $8\nmid20$.
+
+   We can use Python to check if one number divides another quite easily using
+   the *modulo* operator ~%~:
+   #+begin_src python :exports both :results yes
+     4%2 # = 0 since 2 | 4
+     60%15 # = 0 since 15 | 60%15
+     20%8 # does NOT equal 0 since 8 does not divide 20
+   #+end_src
+
+   *Example*: What does the modulo operator represent?  For example, if ~n%4~
+    evaluates to $3$ for some mystery number $n$, what does this tell us about
+    $n$?
+
+   *Example*: What are all of the possible values of ~n%4~?  What about ~n%6~?
+
+   Arithmetic with the modulo operator is called *modular arithmetic*.  We
+   denote the result of ~k%n~ with the notation $k\mod n$.
+
+   *Example*: Find $9\mod 5$ and $4452 \mod  71$.
+
+   *Example*: If $k$ is a number that is a multiple of $3$ (i.e., $3\mid k$),
+    what is true about $k\mod 3$?  What about the sum of its digits modulo $3$?
