@@ -1,4 +1,4 @@
-# Created 2025-06-16 Mon 10:52
+# Created 2025-06-16 Mon 12:16
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
@@ -18,25 +18,43 @@ Lectures for mathematics summer gifted program.
   decryption_key = {}
   for l1, l2 in zip(letters, letters_cipher):
       encryption_key[l1] = l2
+      decryption_key[l2] = l1
 
   def substitution_encrypt(plaintext, encryption_key):
       plaintext = plaintext.lower()
       ciphertext = ""
 
       for letter in plaintext:
-          if letter.isalpha():
+          if letter in encryption_key.keys():
               ciphertext += encryption_key[letter]
           else:
               ciphertext += letter
 
       return ciphertext
 
+  def substitution_decrypt(ciphertext, decryption_key):
+      ciphertext = ciphertext.lower()
+      plaintext = ""
+
+      for letter in ciphertext:
+          if letter in decryption_key.keys():
+              plaintext += decryption_key[letter]
+          else:
+              plaintext += letter
+
+      return plaintext
+
   message = "This is my message."
-
   encrypted_message = substitution_encrypt(message, encryption_key)
+  decrypted_message = substitution_decrypt(encrypted_message, decryption_key)
 
-  print(f"Plaintext:\t {message}")
+  print(f"Message: {message}")
   print(f"Ciphertext: {encrypted_message}")
+  print(f"Plaintext: {decrypted_message}")
 #+end_src
 
-[[https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html][Frequency diagram]] for letters of the English langauge.
+- [[https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html][Frequency diagram]] for letters of the English language.
+
+- **Example**: The following message has been encrypted using a substitution
+  cipher: 'ykbk nk vbk, og pijlyvggcg, nktz qobaogov.'
+  Decrypt this message.

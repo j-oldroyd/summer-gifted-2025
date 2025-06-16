@@ -21,34 +21,50 @@
      decryption_key = {}
      for l1, l2 in zip(letters, letters_cipher):
          encryption_key[l1] = l2
+         decryption_key[l2] = l1
 
      def substitution_encrypt(plaintext, encryption_key):
          plaintext = plaintext.lower()
          ciphertext = ""
 
          for letter in plaintext:
-             if letter.isalpha():
+             if letter in encryption_key.keys():
                  ciphertext += encryption_key[letter]
              else:
                  ciphertext += letter
 
          return ciphertext
 
+     def substitution_decrypt(ciphertext, decryption_key):
+         ciphertext = ciphertext.lower()
+         plaintext = ""
+
+         for letter in ciphertext:
+             if letter in decryption_key.keys():
+                 plaintext += decryption_key[letter]
+             else:
+                 plaintext += letter
+
+         return plaintext
+
      message = "This is my message."
-
      encrypted_message = substitution_encrypt(message, encryption_key)
+     decrypted_message = substitution_decrypt(encrypted_message, decryption_key)
 
-     print(f"Plaintext:\t {message}")
+     print(f"Message: {message}")
      print(f"Ciphertext: {encrypted_message}")
+     print(f"Plaintext: {decrypted_message}")
    #+end_src
 
    #+RESULTS:
    : ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-   : ['g', 'a', 'e', 's', 'r', 'c', 'w', 'j', 'k', 'm', 'y', 'v', 'l', 'z', 't', 'f', 'p', 'x', 'n', 'd', 'h', 'i', 'o', 'u', 'q', 'b']
-   : Plaintext:	 This is my message.
-   : Ciphertext: djkn kn lq lrnngwr.
+   : ['m', 'l', 'a', 'g', 'j', 'd', 'b', 'x', 'y', 's', 'e', 'n', 'h', 'o', 'v', 'k', 'c', 't', 'w', 'p', 'r', 'u', 'f', 'z', 'i', 'q']
 
-   [[https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html][Frequency diagram]] for letters of the English langauge.
+   - [[https://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html][Frequency diagram]] for letters of the English language.
+
+   - **Example**: The following message has been encrypted using a substitution
+     cipher: 'ykbk nk vbk, og pijlyvggcg, nktz qobaogov.'
+     Decrypt this message.
 * Discrete mathematics
   :PROPERTIES:
   :EXPORT_FILE_NAME: discrete
