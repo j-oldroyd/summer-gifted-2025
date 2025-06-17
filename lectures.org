@@ -128,7 +128,7 @@
 
    *Example*: Use the ~ROT3~ cipher above to encrypt the message ~Picard is
     better than Kirk.~  What Caesar cipher is the decryption key for the ~ROT3~
-    cipher?
+    cipher?  You can use the application [[https://caesar-cipher.com/caesar-cipher-wheel][here]] to help you visualize the cipher.
 
    *Example*: The Caesar cipher is also vulnerable to frequency analysis just
     like the substitution cipher is.  Using this, try to decrypt the following
@@ -186,15 +186,38 @@
     the keyword to determine the corresponding encryption.  For example, the
     message ~I'M THE BEST AT USING MAKING SECRETS~ with the keyword ~CATS~ would
     encrypt to ~KMMZGBXKCAMECKBFISYUTEMK~.  The encryption process works by
-    selecting a row of the above table using an appropriate letter from the
-    keyword and a column using the corresponding letter of the plaintext to
+    selecting a row of the above Vigenere table using an appropriate letter from
+    the keyword and a column using the corresponding letter of the plaintext to
     produce the encrypted letter.  The decryption process works by choosing a
     row of the table by using the keyword, following along the row until you hit
     the ciphertext letter, and then using the column to determine the plaintext
     letter.
 
-    *Example*: using the Vigenere cipher with the keyword ~BAD~, encrypt the
-     plaintext ~WHOYOUGONNACALL~ and decrypt the ciphertext ~HOVFAKBWNT~.
+    *Example*: using the Vigenere cipher with the keyword ~BAD~, /encrypt/ the
+     plaintext ~WHOYOUGONNACALL~ and /decrypt/ the ciphertext ~HOVFAKBWNT~.
+
+    The Vigenere cipher long had a reputation for being unbreakable without
+    knowing the keyword, but in the 19th century mathematicians developed
+    methods for analyzing this cipher using frequency analysis.  To get an idea
+    of how this analysis works, suppose that some message is encrypted with an
+    unknown keyword to get ~URCAFYBBIKVLURCAFYBBI~.  A segment of this coded
+    message is repeated, which suggests that this segment corresponds to the
+    same word or phrase in the original message.  The second segment starts $12$
+    positions after the first, and so the keyword or phrase must be either $1$,
+    $2$, $3$, $4$, $6$, or $12$ letters long.  Since $1$, $2$, and $3$ would be
+    very short (and therefore weak) keywords, one can assume that the keyword is
+    $4$ letters long.
+
+    Now suppose we also happen to learn that the words ~DONTKNOW~ were
+    transmitted in this message.  An interesting thing happens if we shift this
+    phrase by $4$ letters and then "subtract"  the shifted version from the
+    original: ~DONTKNOW-KNOW____~ becomes ~TBZX____~.  Why is this important?
+    Because the same sequence also shows up if we apply the same operation to
+    the ciphertext.  This means that the position of the ciphertext that
+    corresponds to ~TBZK~ in the difference must also be the location of the
+    word ~KNOW~.  If we subtract the word ~KNOW~ from its corresponding
+    ciphertext, we get the keyword used to encrypt the message.  And once we
+    know the keyword, we can decrypt the rest of the message.
 * Discrete mathematics
   :PROPERTIES:
   :EXPORT_FILE_NAME: discrete
@@ -254,6 +277,9 @@
     evaluates to $3$ for some mystery number $n$, what does this tell us about
     $n$?
 
+   The value of $k\mod n$ can be found using the *Euclidean algorithm*, which is
+   one of the oldest and most important algorithms in mathematics.
+
    *Example*: What are all of the possible values of ~n%4~?  What about ~n%6~?
 
    Arithmetic with the modulo operator is called *modular arithmetic*.  We
@@ -284,6 +310,8 @@
 
     #+RESULTS:
     : 0
+
+    *Example*: Is $0416522351$ a valid ISBN-10 number?
 
     *Example*: Suppose that a book has a partial ISBN-10 number given by
      $030654401?$, where the last digit is unreadable.  What must the last
