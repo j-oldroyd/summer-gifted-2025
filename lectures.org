@@ -288,3 +288,29 @@
     *Example*: Suppose that a book has a partial ISBN-10 number given by
      $030654401?$, where the last digit is unreadable.  What must the last
      digit be?
+
+    Modular arithmetic is also useful when dealing with /cyclic/ quantities.
+
+    *Example*: A video game puzzle involves rotating three concentric rings so
+     that their platforms line up.  At the start of the puzzle, the platforms
+     are pointing east.  To solve the puzzle, all the platforms must be pointing
+     south.  If moving a ring moves its adjacent circles in the opposite
+     direction by the same amount, what moves will solve the puzzle?
+
+     *Answer*: The puzzle is equivalent to solving the system of equations given
+      by
+
+      $$-x-y=1, -x+y-z=1, -y+z=1$$
+
+      over $\mathbb{Z}_4$, where $x$ is the number of moves required of the
+      inner ring, $y$ the middle and $z$ the outer.  This can easily be done
+      using Python:
+     #+begin_src python :results none :exports none
+       from sympy import solve, ZZ
+       from sympy.abc import x, y, z
+
+       print(solve([-x-y-1, -x+y-z-1, -y+z-1], [x,y,z]))
+     #+end_src
+
+     #+RESULTS:
+     : {x: -2, y: 1, z: 2}
