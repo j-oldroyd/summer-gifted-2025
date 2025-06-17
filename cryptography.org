@@ -1,4 +1,4 @@
-# Created 2025-06-17 Tue 12:20
+# Created 2025-06-17 Tue 12:56
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
@@ -52,7 +52,7 @@ Lectures for mathematics summer gifted program.
 
 #+results: 
 : Message: This is my message.
-: Ciphertext: havd vd tl tzddxbz.
+: Ciphertext: ifbk bk se sukkwxu.
 : Plaintext: this is my message.
 
 
@@ -136,7 +136,7 @@ shifted three letters along the alphabet.
  like the substitution cipher is.  Using this, try to decrypt the following
  message encrypted using the Caesar cipher:
 #+results: 
-: None
+: xh pcndct tktc pqat id uxvjgt dji iwxh bthhpvt?  x'b cdi hjgt.
 
 
 Part of the reason the Caesar cipher is so easy to crack, like any other
