@@ -1,4 +1,4 @@
-# Created 2025-06-16 Mon 17:35
+# Created 2025-06-17 Tue 12:20
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
@@ -52,7 +52,7 @@ Lectures for mathematics summer gifted program.
 
 #+results: 
 : Message: This is my message.
-: Ciphertext: qngs gs mu masscva.
+: Ciphertext: havd vd tl tzddxbz.
 : Plaintext: this is my message.
 
 
@@ -127,3 +127,58 @@ a certain amount:
 
 The above table is an example of a ~ROT3~ Caesar cipher since each letter was
 shifted three letters along the alphabet.
+
+*Example*: Use the ~ROT3~ cipher above to encrypt the message ~Picard is
+    better than Kirk.~  What Caesar cipher is the decryption key for the ~ROT3~
+ cipher?  You can use the application [[https://caesar-cipher.com/caesar-cipher-wheel][here]] to help you visualize the cipher.
+
+*Example*: The Caesar cipher is also vulnerable to frequency analysis just
+ like the substitution cipher is.  Using this, try to decrypt the following
+ message encrypted using the Caesar cipher:
+#+results: 
+: None
+
+
+Part of the reason the Caesar cipher is so easy to crack, like any other
+substitution cipher, is because there is a one-to-one correspondence between
+letters before and after encryption.  One way to address this is to use a
+combination of Caesar ciphers as in the Vigenere cipher.  Such a cipher
+makes use of a table like the following to encrypt a message: [[https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher#/media/File:Vigen%C3%A8re_square_shading.svg][Vigenere
+cipher]].
+
+This encryption scheme involves first choosing a /keyword/ and then using
+the keyword to determine the corresponding encryption.  For example, the
+message ~I'M THE BEST AT USING MAKING SECRETS~ with the keyword ~CATS~ would
+encrypt to ~KMMZGBXKCAMECKBFISYUTEMK~.  The encryption process works by
+selecting a row of the above Vigenere table using an appropriate letter from
+the keyword and a column using the corresponding letter of the plaintext to
+produce the encrypted letter.  The decryption process works by choosing a
+row of the table by using the keyword, following along the row until you hit
+the ciphertext letter, and then using the column to determine the plaintext
+letter.
+
+*Example*: using the Vigenere cipher with the keyword ~BAD~, /encrypt/ the
+ plaintext ~WHOYOUGONNACALL~ and /decrypt/ the ciphertext ~HOVFAKBWNT~.
+
+The Vigenere cipher long had a reputation for being unbreakable without
+knowing the keyword, but in the 19th century mathematicians developed
+methods for analyzing this cipher using frequency analysis.  To get an idea
+of how this analysis works, suppose that some message is encrypted with an
+unknown keyword to get ~URCAFYBBIKVLURCAFYBBI~.  A segment of this coded
+message is repeated, which suggests that this segment corresponds to the
+same word or phrase in the original message.  The second segment starts $12$
+positions after the first, and so the keyword or phrase must be either $1$,
+$2$, $3$, $4$, $6$, or $12$ letters long.  Since $1$, $2$, and $3$ would be
+very short (and therefore weak) keywords, one can assume that the keyword is
+$4$ letters long.
+
+Now suppose we also happen to learn that the words ~DONTKNOW~ were
+transmitted in this message.  An interesting thing happens if we shift this
+phrase by $4$ letters and then "subtract"  the shifted version from the
+original: ~DONTKNOW-KNOW____~ becomes ~TBZX____~.  Why is this important?
+Because the same sequence also shows up if we apply the same operation to
+the ciphertext.  This means that the position of the ciphertext that
+corresponds to ~TBZK~ in the difference must also be the location of the
+word ~KNOW~.  If we subtract the word ~KNOW~ from its corresponding
+ciphertext, we get the keyword used to encrypt the message.  And once we
+know the keyword, we can decrypt the rest of the message.

@@ -1,4 +1,4 @@
-# Created 2025-06-16 Mon 11:04
+# Created 2025-06-17 Tue 12:20
 #+title: Discrete mathematics
 #+author: Jesse Oldroyd
 Lectures for computer science summer gifted program.
@@ -36,3 +36,101 @@ $$F_0 = 1, F_1 = 2\text{ and } F_n = F_{n-1}+F_{n-2}.$$
 
 Find the sum of the *even-valued* Fibonacci numbers that
 do not exceed $4000000$.
+* <2025-06-17 Tue>
+Number theory is the study of the set of natural numbers $\mathbb{N}$, which
+for us is just the set of nonnegative whole numbers.  Since the prime numbers
+are the "building blocks" of every positive integer, number theory pays
+special attention to these numbers and the related concept of /divisibility/.
+In particular, we say that $j$ *divides* $k$ if there is a whole number $m$
+such that $k = mj$.  For instance, $2\mid 4$ and $15\mid60$ but $8\nmid20$.
+
+We can use Python to check if one number divides another quite easily using
+the *modulo* operator ~%~:
+#+begin_src python :exports both :results yes
+  4%2 # = 0 since 2 | 4
+  60%15 # = 0 since 15 | 60%15
+  20%8 # does NOT equal 0 since 8 does not divide 20
+#+end_src
+
+#+results: 
+: None
+
+
+*Example*: What does the modulo operator represent?  For example, if ~n%4~
+ evaluates to $3$ for some mystery number $n$, what does this tell us about
+ $n$?
+
+The value of $k\mod n$ can be found using the *Euclidean algorithm*, which is
+one of the oldest and most important algorithms in mathematics.
+
+*Example*: What are all of the possible values of ~n%4~?  What about ~n%6~?
+
+Arithmetic with the modulo operator is called *modular arithmetic*.  We
+denote the result of ~k%n~ with the notation $k\mod n$.
+
+*Example*: Find $9\mod 5$ and $4452 \mod  71$.
+
+*Example*: If $k$ is a number that is a multiple of $3$ (i.e., $3\mid k$),
+ what is true about $k\mod 3$?  What about the sum of its digits modulo $3$?
+
+An important property of modular arithmetic is that it "respects" regular
+arithmetic: if $a+b=c$ then $(a+b)\mod n = c \mod n$.
+
+*Example*: Modular arithmetic has applications in diverse fields of
+ mathematics and its applications.  One important example lies in /error
+ correcting codes/.  For example, the ISBN-10 is a ten digit number that is
+ used to identify a specific text.  However, this can't be any ten digit
+ number as some structure is required to help with identification.  A certain
+ (amazing) book has ISBN given by $0691175918$.  To check that this is a
+ valid ISBN, we multiply each digit by a decreasing sequence starting at 10,
+ and then check if the result is a multiple of $11$:
+#+begin_src python :results output :exports both
+  # isbn = 0691175918
+
+  checksum = 10*0 + 9*6 + 8*9 + 7*1 + 6*1 + 5*7 + 4*5 + 3*9 + 2*1 + 1*8
+  print(checksum%11)
+#+end_src
+
+#+results: 
+: 0
+
+
+*Example*: Is $0416522351$ a valid ISBN-10 number?
+
+*Example*: Suppose that a book has a partial ISBN-10 number given by
+ $030654401?$, where the last digit is unreadable.  What must the last
+ digit be?
+
+Modular arithmetic is also useful when dealing with /cyclic/ quantities.
+
+*Example*: A video game puzzle involves rotating three concentric rings so
+ that their platforms line up.  At the start of the puzzle, the platforms
+ are pointing east.  To solve the puzzle, all the platforms must be pointing
+ south.  If moving a ring moves its adjacent circles in the opposite
+ direction by the same amount, what moves will solve the puzzle?
+
+*Answer*: The puzzle is equivalent to solving the system of equations given
+ by
+
+$$-x-y=1, -x+y-z=1, -y+z=1$$
+
+  over $\mathbb{Z}_4$, where $x$ is the number of moves required of the
+  inner ring, $y$ the middle and $z$ the outer.  This can easily be done
+  using Python:
+The Caesar cipher (and Vigenere cipher) is also an application of modular
+arithmetic.
+
+*Example*: Create a Python program that implements the Caesar cipher.  The
+ program should be able to take a given string and a given rotation value
+ and return the encrypted version of that string.
+
+Modular arithmetic is also useful in the construction of *one-way
+functions*, which are tools to verify correctness or integrity of some
+transmission.  For example, a recipient can use a one-way function to verify
+that they have successfully decrypted a message without referring to the
+message itself.  A good one-way function should be easy to compute but very
+difficult to invert.
+
+*Example*: Create a one-way function $f(x)$ as follows: let $n = 894847$ and
+ define $f(x) = x^3 \mod n$ for $x$ in $\mathbb{Z}_n$.  Use this function to
+ determine which other group in class was given the same number as you.
