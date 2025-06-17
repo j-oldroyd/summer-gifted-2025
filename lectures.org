@@ -346,3 +346,14 @@
     *Example*: Create a Python program that implements the Caesar cipher.  The
      program should be able to take a given string and a given rotation value
      and return the encrypted version of that string.
+
+    Modular arithmetic is also useful in the construction of *one-way
+    functions*, which are tools to verify correctness or integrity of some
+    transmission.  For example, a recipient can use a one-way function to verify
+    that they have successfully decrypted a message without referring to the
+    message itself.  A good one-way function should be easy to compute but very
+    difficult to invert.
+
+    *Example*: Create a one-way function $f(x)$ as follows: let $n = 894847$ and
+     define $f(x) = x^3 \mod n$ for $x$ in $\mathbb{Z}_n$.  Use this function to
+     determine which other group in class was given the same number as you.
