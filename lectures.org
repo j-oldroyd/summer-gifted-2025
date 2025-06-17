@@ -339,3 +339,10 @@
 
        print(solve([-x-y-1, -x+y-z-1, -y+z-1], [x,y,z]))
      #+end_src
+
+    The Caesar cipher (and Vigenere cipher) is also an application of modular
+    arithmetic.
+
+    *Example*: Create a Python program that implements the Caesar cipher.  The
+     program should be able to take a given string and a given rotation value
+     and return the encrypted version of that string.
