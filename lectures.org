@@ -264,6 +264,9 @@
      p = 7121
      q = 6577
 
+     n = p*q
+     phi = (p - 1)*(q - 1)
+
    #+end_src
 * Discrete mathematics
   :PROPERTIES:
@@ -404,7 +407,7 @@
       inner ring, $y$ the middle and $z$ the outer.  This can easily be done
       using Python:
      #+begin_src python :results none :exports none
-       from sympy import solve, ZZ
+       from sympy import solve
        from sympy.abc import x, y, z
 
        print(solve([-x-y-1, -x+y-z-1, -y+z-1], [x,y,z]))
