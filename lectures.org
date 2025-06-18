@@ -280,9 +280,6 @@
     evaluates to $3$ for some mystery number $n$, what does this tell us about
     $n$?
 
-   The value of $k\mod n$ can be found using the *Euclidean algorithm*, which is
-   one of the oldest and most important algorithms in mathematics.
-
    *Example*: What are all of the possible values of ~n%4~?  What about ~n%6~?
 
    Arithmetic with the modulo operator is called *modular arithmetic*.  We
@@ -320,7 +317,33 @@
      $030654401?$, where the last digit is unreadable.  What must the last
      digit be?
 
-    Modular arithmetic is also useful when dealing with /cyclic/ quantities.
+    The value of $k\mod n$ can be found using the *division algorithm*, which
+    is one of the oldest and most important algorithms in mathematics.
+
+    *Example*: Implement the division algorithm in Python.  As an example of
+    what your algorithm should be capable of, ~division(45322, 21)~ should
+    return the following values for the quotient $q$ and remainder $r$:
+
+    #+begin_src python :exports results :results output
+      def division(m, n):
+        if m%1 != 0 or n%1 != 0 or m < 0 or n < 0:
+          raise ValueError('Please enter nonnegative integers!')
+        else:
+          q = 0
+          r = m
+          while r >= n:
+            q = q+1
+            r = m - q*n
+
+          return q, r
+
+      print(division(45322, 21))
+    #+end_src
+
+    #+RESULTS:
+    : (2158, 4)
+
+     Modular arithmetic is also useful when dealing with /cyclic/ quantities.
 
     *Example*: A video game puzzle involves rotating three concentric rings so
      that their platforms line up.  At the start of the puzzle, the platforms
@@ -349,6 +372,12 @@
     *Example*: Create a Python program that implements the Caesar cipher.  The
      program should be able to take a given string and a given rotation value
      and return the encrypted version of that string.
+
+    *Example*: An *affine cipher* is a modified form of the Caesar cipher that
+    makes use of multiplication as well as addition to shift letters around.
+    These ciphers take the form $f(x) = ax + b \mod 26$ when using the English
+    alphabet.  Modify your code from the last example to create an affine
+    cipher.
 
     Modular arithmetic is also useful in the construction of *one-way
     functions*, which are tools to verify correctness or integrity of some
