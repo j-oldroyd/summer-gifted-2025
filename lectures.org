@@ -1,6 +1,6 @@
 #+TITLE: Summer Gifted Notes 2025
 #+AUTHOR: Jesse Oldroyd
-#+PROPERTY: header-args :eval yes
+
 * Cryptography
   :PROPERTIES:
   :EXPORT_FILE_NAME: cryptography
