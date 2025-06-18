@@ -1,5 +1,6 @@
 #+TITLE: Summer Gifted Notes 2025
 #+AUTHOR: Jesse Oldroyd
+#+PROPERTY: header-args :eval yes
 * Cryptography
   :PROPERTIES:
   :EXPORT_FILE_NAME: cryptography
@@ -221,6 +222,49 @@
     word ~KNOW~.  If we subtract the word ~KNOW~ from its corresponding
     ciphertext, we get the keyword used to encrypt the message.  And once we
     know the keyword, we can decrypt the rest of the message.
+** <2025-06-18 Wed>
+   Suppose that Alice and Bob want to send a message to each other across a
+   noisy room, but they don't want anyone else to be able to understand what the
+   message says.  They are also unable to get close enough to each other to
+   relay the message in person, so they must rely on /public-key cryptography/
+   to securely relay their information.
+
+   Public-key cryptography works by creating a *private key* and a *public key*
+   for every individual.  If Alice wants to send a message to Bob, then she can
+   encrypt the message using Bob's public key and send it along.  Once Bob
+   receives the message, they can decrypt the message with their own private
+   key.  A nice example of this process is outlined [[https://crypto.mste.illinois.edu/][here]], and an
+   encryption/decryption app is located [[https://crypto.mste.illinois.edu/encryption][here]].
+
+   Public-key cryptography relies on properties of prime numbers to work
+   securely.  In particular, the fact that multiplication is quick and factoring
+   is difficult (or at least seems to be difficult) is essential.  The RSA
+   algorithm is the oldest and one of the most widely used public-key
+   cryptosystems and has two components: /key generation/ and
+   /encryption-decryption/.  For more, you can view Chapter 8 of [[https://cacr.uwaterloo.ca/hac/about/chap8.pdf][The Handbook of
+   Applied Cryptography]].  For key generation for person $A$:
+   1. Generate two distinct primes $p$ and $q$ that are roughly the same size.
+      The larger they are, the harder your key will be to crack.
+   2. Set $n = pq$ and $\phi = (p-1)(q-1)$.
+   3. Select an integer $e_A$ between $1$ and $\phi$ such that the greatest
+      common divisor of $e_A$ and $\phi$ is equal to $1$.
+   4. Find the unique integer $d_A$ between $1$ and $\phi$ such that $d_Ae_A =
+      1\mod\phi$.  Your public key is $(n, e_A)$ and your private key is $d_A$.
+   To encrypt a message from person $A$ to person $B$:
+   1. Person $A$ should obtain person $B$'s public key $(n, e_B)$.
+   2. Now, $A$ should take their message (viewed as an integer $m$ in
+      $\mathbb{Z}_n$) and compute $c = m^e_B\mod n$.  This represents the
+      ciphertext of the plaintext message $m$ and is transmitted to person $B$.
+   3. Finally, person $B$ can decrypt the message by raising it to their own
+      secret key: $m = c^d_B \mod n$.
+
+   *Example*: Create your own private and public keys using $p = 7121$ and $q =
+    6577$.
+   #+begin_src python :results output :export both
+     p = 7121
+     q = 6577
+
+   #+end_src
 * Discrete mathematics
   :PROPERTIES:
   :EXPORT_FILE_NAME: discrete
