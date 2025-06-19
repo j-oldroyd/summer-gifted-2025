@@ -1,6 +1,24 @@
 #+TITLE: Summer Gifted Notes 2025
 #+AUTHOR: Jesse Oldroyd
 
+* Combinatorics
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: combinatorics
+  :END:
+  *Combinatorics* is the mathematics of counting objects.  It's generally a lot
+   harder than it sounds!
+
+   *Example*: Try answering the following questions:
+   1. How many batting lineups are possible from a nine-player roster in
+    baseball?
+   2. If two nickels, three dimes and seven pennies, in how many ways can you
+      make 22 cents?
+   3. In how many ways can you use nickels, dimes and pennies to make 22 cents
+      in change?
+
+   Counting problems can have different features that affect the count, such as
+   whether or not order matters, or whether or not we "draw without
+   replacement."
 * Cryptography
   :PROPERTIES:
   :EXPORT_FILE_NAME: cryptography
