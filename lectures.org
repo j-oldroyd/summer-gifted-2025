@@ -259,15 +259,45 @@
       secret key: $m = c^d_B \mod n$.
 
    *Example*: Create your own private and public keys using $p = 7121$ and $q =
-    6577$.
+    6577$ and then use it to encrypt/decrypt a message.
    #+begin_src python :results output :export both
+     import random
+     from math import gcd
+
      p = 7121
      q = 6577
 
      n = p*q
      phi = (p - 1)*(q - 1)
 
+     # The code below picks a random value for e, but we need to make sure
+     # that the greatest common divisor of e and phi is equal to 1
+     while True:
+         e = random.randint(1, phi)
+         if gcd(e, phi) == 1:
+             break
+
+     # Now we construct d so that de = 1 mod phi
+     d = pow(e, -1, phi) # Computes e^-1 mod phi
+     print(f"My public key times my private key is {d*e % phi}.")
+
+     print(f"My public key is ({n}, {e}).")
+
+     # At this point you have everything you need to create your public-key
+     # cipher.  Try encoding the message below using someone else's public
+     # key and then send the resulting ciphertext to them.  If they can
+     # decrypt it using their own private key, you're good!
+     message = "123456"
    #+end_src
+
+   #+RESULTS:
+   : My public key times my private key is 1.
+   : My public key is (46834817, 42296461).
+
+   *Example* (/requires algebra!/): explain why knowing $p$ and $q$ is enough to
+    crack any cryptosystem like the above.  /Hint/: you need to see if you can
+    solve for $d$ in terms of $e$, $p$ and $q$ using the fact that $de =
+    1\mod\phi$.
 * Discrete mathematics
   :PROPERTIES:
   :EXPORT_FILE_NAME: discrete
