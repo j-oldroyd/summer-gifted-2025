@@ -1,0 +1,52 @@
+# Created 2025-06-19 Thu 12:55
+#+title: Combinatorics
+#+author: Jesse Oldroyd
+* <2025-06-19 Thu>
+*Combinatorics* is the mathematics of counting objects.  It's generally a lot
+ harder than it sounds!
+
+*Example*: Try answering the following questions:
+1. How many batting lineups are possible from a nine-player roster in
+   baseball?
+2. How many three letter "words" can be formed from the letters $A, B, C$?
+3. If two nickels, three dimes and seven pennies, in how many ways can you
+   make 22 cents?
+4. In how many ways can you use nickels, dimes and pennies to make 22 cents
+   in change?
+
+Counting problems can have different features that affect the count, such as
+whether or not order matters, or whether or not we "draw without
+replacement."
+
+A *set* is a collection of elements, often denoted using curly braces: $\{1,
+   2, 3\}$ is one example of a set, as is $\mathbb{Z}_7 = \{0, 1, 2, 3, 4, 5,
+   6\}$.  The *empty set* is the unique set which contains no elements:
+$\emptyset = \{ \}$.  A *subset* of another set is just a set that contains
+none, some or all elements from that set: $\{0, 1\}$ is a subset of
+$\mathbb{Z}_7$ but not of $\{1, 2, 3\}$.
+
+*Example*: How many subsets can you find for $\{1, 2\}$?  What about $\{1, 2,
+    3, 4\}$?  Can you find a general formula?
+
+The batting order example and the subset example here are respectively
+examples of *permutations* and *combinations*.  Both are examples of counts
+/without/ replacement, but order matters for permutations whereas order
+doesn't matter for combinations.
+
+*Example*: Given $3$ distinct objects, in how many ways can they be
+ arranged?  What if you had $10$ distinct objects?  What if you had $n$?
+
+The number of permutations of $n$ distinct objects is denoted by $_nP_n$.
+In the last example, you found $_3P_3, _{10}P_{10}$ and $_nP_n$.
+
+*Example*: How many four digit numbers are there that use the digits $1$
+ through $9$, but no digit shows up more than once?
+
+The number of combinations of $k$ objects from $n$ total distinct objects is
+denoted by $_nC_k$ or $\binom{n}{k}$ (read as "$n$ choose $k$").  These
+numbers are also sometimes called binomial coefficients.
+
+*Example*: Find the number of subsets of $\{1, 2, 3\}$ of size $2$ and
+ write this as an appropriate binomial coefficient.
+
+*Example*: Find a formula for $\binom{n}{k}$.
