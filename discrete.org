@@ -1,4 +1,4 @@
-# Created 2025-06-18 Wed 12:31
+# Created 2025-06-19 Thu 12:05
 #+title: Discrete mathematics
 #+author: Jesse Oldroyd
 Lectures for computer science summer gifted program.

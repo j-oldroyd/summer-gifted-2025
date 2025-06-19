@@ -1,4 +1,4 @@
-# Created 2025-06-18 Wed 12:30
+# Created 2025-06-19 Thu 12:05
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
@@ -52,7 +52,7 @@ Lectures for mathematics summer gifted program.
 
 #+results: 
 : Message: This is my message.
-: Ciphertext: tsrj rj gn gyjjecy.
+: Ciphertext: alps ps yb yvssnrv.
 : Plaintext: this is my message.
 
 
@@ -219,8 +219,70 @@ To encrypt a message from person $A$ to person $B$:
    secret key: $m = c^d_B \mod n$.
 
 *Example*: Create your own private and public keys using $p = 7121$ and $q =
-    6577$.
+    6577$ and then use it to encrypt/decrypt a message.
 #+begin_src python :results output :export both
+  import random
+  from math import gcd
+
   p = 7121
   q = 6577
+
+  n = p*q
+  phi = (p - 1)*(q - 1)
+
+  # The code below picks a random value for e, but we need to make sure
+  # that the greatest common divisor of e and phi is equal to 1
+  while True:
+      e = random.randint(1, phi)
+      if gcd(e, phi) == 1:
+          break
+
+  # Now we construct d so that de = 1 mod phi
+  d = pow(e, -1, phi) # Computes e^-1 mod phi
+  print(f"My public key times my private key is {d*e % phi}.")
+
+  print(f"My public key is ({n}, {e}).")
+
+  # At this point you have everything you need to create your public-key
+  # cipher.  Try encoding the message below using someone else's public
+  # key and then send the resulting ciphertext to them.  If they can
+  # decrypt it using their own private key, you're good!
+  message = "123456"
 #+end_src
+
+*Example* (/requires algebra!/): explain why knowing $p$ and $q$ is enough to
+ crack any cryptosystem like the above.  /Hint/: you need to see if you can
+ solve for $d$ in terms of $e$, $p$ and $q$ using the fact that $de =
+    1\mod\phi$.
+
+Since it's basically trivial to find the private key given knowledge of the
+primes $p$ and $q$ used to create the public key, we want to generate a new
+set of primes for each key we create.  One approach to doing so relies on
+generating random integers and then checking if the integers generated are
+actually prime (go figure).  This requires using a /primality test/ to check
+if the resulting integers are actually prime.  An old yet useful test is
+provided by *Fermat's Theorem*:
+#+begin_quote
+If $p$ is a prime number, then $a^p - a$ is a multiple of $p$ for any integer
+$a$.  Equivalently, if $p$ is prime then $a^p = a \mod p$.
+#+end_quote
+Note that this test doesn't tell us precisely when a number is prime, but it
+can let us know if a number is composite.  A relatively simple way to use
+this test to determine if a given number $p$ is prime is as follows:
+1. Decide how many tests you want to run using Fermat's Theorem.  Call this
+   number $n$.
+2. For $i=1$ to $n$, do the following:
+   1. Pick a random integer between $2$ and $p - 2$.
+   2. Set $r = a^{p-1}\mod p$.
+   3. If $r\neq 1$, STOP. You now know that $p$ is composite.  Otherwise,
+      repeat from above and pick another random integer between $2$ and $p -
+               2$.
+
+*Example*: Create a function ~fermat~ that implements the primality test
+ above, then try applying your function to test whether or not the numbers
+ $99$, $143$ and $561$ are prime.
+
+*Example*: Create a function ~rsa_key_gen~ that uses random primes to
+ generate public/private key-pairs.  Your function should also use the
+ ~fermat~ function to test for primality, and you can reuse your code above
+ to produce the actual keys.

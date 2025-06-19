@@ -551,6 +551,9 @@
      define $f(x) = x^3 \mod n$ for $x$ in $\mathbb{Z}_n$.  Use this function to
      determine which other group in class was given the same number as you.
 * Numerical Analysis
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: numerical-analysis
+  :END:
 ** <2025-06-19 Thu>
   Many mathematical models are written in terms of *differential equations*.
   These are equations that describe how some quantity $y$ changes over time (or
