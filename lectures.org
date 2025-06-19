@@ -521,7 +521,7 @@
       over $\mathbb{Z}_4$, where $x$ is the number of moves required of the
       inner ring, $y$ the middle and $z$ the outer.  This can easily be done
       using Python:
-     #+begin_src python :results none :exports none
+     #+begin_src python :results none :exports code
        from sympy import solve
        from sympy.abc import x, y, z
 

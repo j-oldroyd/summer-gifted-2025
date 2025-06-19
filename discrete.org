@@ -1,4 +1,4 @@
-# Created 2025-06-19 Thu 12:05
+# Created 2025-06-19 Thu 14:04
 #+title: Discrete mathematics
 #+author: Jesse Oldroyd
 Lectures for computer science summer gifted program.
@@ -122,9 +122,16 @@ Modular arithmetic is also useful when dealing with /cyclic/ quantities.
 
 $$-x-y=1, -x+y-z=1, -y+z=1$$
 
-  over $\mathbb{Z}_4$, where $x$ is the number of moves required of the
-  inner ring, $y$ the middle and $z$ the outer.  This can easily be done
-  using Python:
+over $\mathbb{Z}_4$, where $x$ is the number of moves required of the
+inner ring, $y$ the middle and $z$ the outer.  This can easily be done
+using Python:
+#+begin_src python :results none :exports code
+  from sympy import solve
+  from sympy.abc import x, y, z
+
+  print(solve([-x-y-1, -x+y-z-1, -y+z-1], [x,y,z]))
+#+end_src
+
 The Caesar cipher (and Vigenere cipher) is also an application of modular
 arithmetic.
 
