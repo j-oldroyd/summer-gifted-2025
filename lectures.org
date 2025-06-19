@@ -550,3 +550,27 @@
     *Example*: Create a one-way function $f(x)$ as follows: let $n = 894847$ and
      define $f(x) = x^3 \mod n$ for $x$ in $\mathbb{Z}_n$.  Use this function to
      determine which other group in class was given the same number as you.
+* Numerical Analysis
+** <2025-06-19 Thu>
+  Many mathematical models are written in terms of *differential equations*.
+  These are equations that describe how some quantity $y$ changes over time (or
+  position, or...).  A simple example of such an equation is $y' = y$ where
+  $y(x)$ is some (for now) unknown function.
+
+  Many differential equations are difficult if not impossible to solve exactly,
+  and so numerical approaches have been developed for estimating solutions to
+  these equations.  In these notes we're going to look at how we can implement
+  some of these approaches here.
+
+  *Euler's Method* is probably the simplest method to approximate the solution
+   of a differential equation.  For this method, we usually have some initial
+   data (represented as a point $(x_0, y_0)$) and we want to figure out $y(x)$
+   for some other value of $x$.  We can try to estimate $y(x)$ by using
+   information about how $y$ changes (it's differential equation!) and by
+   choosing a step-size $h$.  Euler's Method can be effective on equations of
+   the form $y' = f(t, y), y(t_0) = y_0$.
+
+  *Example*: Suppose that $y' = y$ and we know that $y(0) = 1$.  Estimate $y(1)$
+   using Euler's Method.
+
+  *Example*: Write a function in Python ~euler_m~ that implements Euler's Method.
