@@ -1,4 +1,4 @@
-# Created 2025-06-19 Thu 12:57
+# Created 2025-06-20 Fri 12:39
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
@@ -52,7 +52,7 @@ Lectures for mathematics summer gifted program.
 
 #+results: 
 : Message: This is my message.
-: Ciphertext: tsgy gy vq vlyyrhl.
+: Ciphertext: thzc zc fw fyccavy.
 : Plaintext: this is my message.
 
 
@@ -247,9 +247,9 @@ To encrypt a message from person $A$ to person $B$:
   # cipher.  Try encoding the message below using someone else's public
   # key and then send the resulting ciphertext to them.  If they can
   # decrypt it using their own private key, you're good!
-  message = "123456"
+  message = 12
 #+end_src
-
+* <2025-06-20 Fri>
 *Example* (/requires algebra!/): explain why knowing $p$ and $q$ is enough to
  crack any cryptosystem like the above.  /Hint/: you need to see if you can
  solve for $d$ in terms of $e$, $p$ and $q$ using the fact that $de =
@@ -282,7 +282,40 @@ this test to determine if a given number $p$ is prime is as follows:
  above, then try applying your function to test whether or not the numbers
  $99$, $143$ and $561$ are prime.
 
-*Example*: Create a function ~rsa_key_gen~ that uses random primes to
- generate public/private key-pairs.  Your function should also use the
- ~fermat~ function to test for primality, and you can reuse your code above
- to produce the actual keys.
+*Example*: Create a functions ~rsa_encode~ and ~rsa_decode~ to encode and
+ decode messages using the RSA public key cryptosystem.  To help transform
+ your messages into integers (which is where the magic happens), the
+ following ~int_to_string~ and ~string_to_int~ functions have been provided,
+ along with code checking if the length of the message is appropriate given
+ your choice of public key.
+
+You should also test encoding/decoding messages by using [[https://docs.google.com/spreadsheets/d/1SSRPpVFkYkC3gRzlxZRsxKzPYyUtbbdyk9YBlAQOGTQ/edit?usp=sharing][this Google Sheets
+document]].  You will want to paste your public key $(n, e)$ into this sheet
+along with any encrypted message you'd like to send to someone else.
+#+begin_src python :results output :exports code
+  import math
+
+  message = "Howdy"
+
+  def string_to_int(s):
+      return int.from_bytes(s.encode(), byteorder='little')
+
+  def int_to_string(i):
+      length = math.ceil(i.bit_length() / 8)
+      return i.to_bytes(length, byteorder='little').decode()
+
+  print(f"Message: {message}")
+  print(f"Integer: {string_to_int(message)}")
+  print(f"Message again: {int_to_string(string_to_int(message))}")
+
+  # Whatever n is, it must be larger than the integer value of your
+  # message.  Otherwise, your message will not be properly encoded.
+  # This function will help you check if the message you want to send to
+  # someone else is compatible with their public key.
+
+  def message_length_check(message, n):
+      if n < string_to_int(message):
+          print("Warning! Your message is too long for this public key.")
+          print(f"Since n={n}, any message you send must be less than {n.bit_length()//8} bytes.")
+          print(f"Your message is {len(message.encode())} bytes long.")
+#+end_src

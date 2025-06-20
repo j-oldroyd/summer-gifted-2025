@@ -1,4 +1,4 @@
-# Created 2025-06-19 Thu 12:55
+# Created 2025-06-20 Fri 12:41
 #+title: Combinatorics
 #+author: Jesse Oldroyd
 * <2025-06-19 Thu>
@@ -28,6 +28,8 @@ $\mathbb{Z}_7$ but not of $\{1, 2, 3\}$.
 *Example*: How many subsets can you find for $\{1, 2\}$?  What about $\{1, 2,
     3, 4\}$?  Can you find a general formula?
 
+/Answer/: A set with $n$ elements has $2^n$ subsets.
+* <2025-06-20 Fri>
 The batting order example and the subset example here are respectively
 examples of *permutations* and *combinations*.  Both are examples of counts
 /without/ replacement, but order matters for permutations whereas order
