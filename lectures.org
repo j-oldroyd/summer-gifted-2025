@@ -32,6 +32,8 @@
    *Example*: How many subsets can you find for $\{1, 2\}$?  What about $\{1, 2,
     3, 4\}$?  Can you find a general formula?
 
+    /Answer/: A set with $n$ elements has $2^n$ subsets.
+** <2025-06-20 Fri>
     The batting order example and the subset example here are respectively
     examples of *permutations* and *combinations*.  Both are examples of counts
     /without/ replacement, but order matters for permutations whereas order
@@ -346,7 +348,7 @@
    #+RESULTS:
    : My public key times my private key is 1.
    : My public key is (46834817, 42296461).
-
+** <2025-06-20 Fri>
    *Example* (/requires algebra!/): explain why knowing $p$ and $q$ is enough to
     crack any cryptosystem like the above.  /Hint/: you need to see if you can
     solve for $d$ in terms of $e$, $p$ and $q$ using the fact that $de =
@@ -573,8 +575,62 @@
    information about how $y$ changes (it's differential equation!) and by
    choosing a step-size $h$.  Euler's Method can be effective on equations of
    the form $y' = f(t, y), y(t_0) = y_0$.
+** <2025-06-20 Fri>
+  *Example*: A car leaves Buckhannon at 12 p.m.  You happen to know how fast the
+  car is traveling at 1 p.m., 2 p.m., 3 p.m. and 4 p.m.:
+  | time        | 12 |  1 |  2 |  3 |  4 |
+  | speed (mph) | 60 | 45 | 55 | 50 | 60 |
+  How far away is the car from Buckhannon at 5 p.m., assuming that the car is
+  always moving in the same direction?
+  #+begin_src python
+    # NumPy helps us out with doing the actual calculations
+    import numpy as np
 
-  *Example*: Suppose that $y' = y$ and we know that $y(0) = 1$.  Estimate $y(1)$
-   using Euler's Method.
+    # We need to set up some data for NumPy to use.
+    velocities = np.array([60, 45, 55, 50, 60])
+    times = np.linspace(0, 4, num=5)
+  #+end_src
 
-  *Example*: Write a function in Python ~euler_m~ that implements Euler's Method.
+  *Example*: Write a function in Python ~euler_m~ that implements Euler's
+  Method.
+  #+begin_src python :results output
+    import numpy as np
+
+    def euler_m(f, t0, y0, h, n):
+        tn, yn = t0, y0
+
+        for i in range(n):
+            yn = yn + h*f(tn, yn)
+            tn = tn + h
+
+        return np.array([tn, yn])
+
+    def f(t, y):
+        return y
+
+  #+end_src
+
+  Numerical analysis is generally concerned with how to efficiently solve or
+  approximate solutions of mathematical problems.  Efficiency does not just mean
+  accuracy!  We are also concerned with computational costs and ease of
+  implementation.
+
+  A common use of numerical analysis is in solving algebraic equations that are
+  difficult if not impossible to solve exactly.
+
+  *Example*: Solve $x^3 - 3x + 1= 0$.
+  #+begin_src python :results output :exports both
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    x = np.linspace(-2, 2)
+    y = x**3 - 3*x + 1
+
+    plt.axhline(0, color="k")
+    plt.axvline(0, color="k")
+    plt.grid()
+    plt.plot(x, y, "b")
+    plt.show()
+  #+end_src
+
+  #+RESULTS:
