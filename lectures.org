@@ -1,6 +1,33 @@
 #+TITLE: Summer Gifted Notes 2025
 #+AUTHOR: Jesse Oldroyd
 
+* Chaos Game
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: chaos-game
+  :END:
+  These activities make use of the ~chaos-animate.py~ code on GitHub.
+
+  *Activity 1*: If you set ~n~ equal to $3$ and ~r~ equal to $0.5$ in
+                ~chaos-animate.py~, you get the fractal known as the Sierpinski
+                triangle.  The dimension of this fractal is the number that
+                solves the equation $2^d = 3$.  Try using Python to find this
+                number by checking different values of $d$.
+
+  *Activity 2*: You can set values for ~n~ (the number of sides of your shape)
+                and ~r~ (how much you travel during each step).  For each value
+                of ~n~ there is a value of ~r~ that is special because the
+                fractals that result don't overlap.  If ~n~ is $3$ then the
+                corresponding ~r~ is $0.5$.  What do you think the corresponding
+                values of ~r~ should be for ~n~ equal to $4$ and $5$?  What do
+                you think will happen to this value of ~r~ as ~n~ gets larger?
+
+  *Activity 3*: We can modify the Chaos Game as well by selecting different
+                points to jump towards.  Try adding a point at the exact center
+                using ~pts.append([0, 0])~ and then set ~n~ to $4$ and ~r~ to
+                $\frac{2}{3}$.  If you triple the side of this fractal, how many
+                copies of the original do you wind up with?  What equation does
+                the dimension of this fractal solve, and what is your best
+                estimate of the dimension?
 * Combinatorics
   :PROPERTIES:
   :EXPORT_FILE_NAME: combinatorics
