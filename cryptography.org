@@ -1,4 +1,4 @@
-# Created 2025-06-20 Fri 12:39
+# Created 2025-06-23 Mon 12:43
 #+title: Cryptography
 #+author: Jesse Oldroyd
 Lectures for mathematics summer gifted program.
@@ -52,7 +52,7 @@ Lectures for mathematics summer gifted program.
 
 #+results: 
 : Message: This is my message.
-: Ciphertext: thzc zc fw fyccavy.
+: Ciphertext: kjgz gz rq rozzxvo.
 : Plaintext: this is my message.
 
 
@@ -294,6 +294,8 @@ document]].  You will want to paste your public key $(n, e)$ into this sheet
 along with any encrypted message you'd like to send to someone else.
 #+begin_src python :results output :exports code
   import math
+  import random
+  import sympy as sp
 
   message = "Howdy"
 
@@ -313,9 +315,67 @@ along with any encrypted message you'd like to send to someone else.
   # This function will help you check if the message you want to send to
   # someone else is compatible with their public key.
 
-  def message_length_check(message, n):
-      if n < string_to_int(message):
-          print("Warning! Your message is too long for this public key.")
-          print(f"Since n={n}, any message you send must be less than {n.bit_length()//8} bytes.")
+  def message_length_check(n, message=[]):
+      """Check if key is large enough for given message.  If no message
+      is provided, then the function only returns the maximum possible
+      size of a message you can send with the given public key.
+
+      """
+      print(f"Since n={n}, any message you send must be less than {n.bit_length()//8} bytes.")
+      if len(message) != 0:
           print(f"Your message is {len(message.encode())} bytes long.")
+
+          if n < string_to_int(message):
+              raise ValueError("Warning! Your message is too long for this public key.")
+
+  # The code below picks a random value for e, but we need to make sure
+  # that the greatest common divisor of e and phi is equal to 1
+  def rsa_keygen(a=1e7, b=1e8):
+      """
+      Generate public and private keys using p and q.
+      """
+      p = sp.randprime(a, b)
+      q = sp.randprime(a, b)
+
+      n = p*q
+      phi = (p - 1)*(q - 1)
+      while True:
+          e = random.randint(1, phi)
+          if math.gcd(e, phi) == 1:
+              break
+
+      # Now we construct d so that de = 1 mod phi
+      d = pow(e, -1, phi) # Computes e^-1 mod phi
+      if d*e % phi != 1:
+          raise ValueError("Unable to generate private key.")
+
+      print(f"My public key is ({n}, {e}).")
+      print(f"This public key can support message lengths up to {n.bit_length()//8} bytes.")
+
+      return n, e, d
+
+  def encode_msg(msg, n, e):
+      """Use public keys n and e to encode a message.  This function
+      makes use of string_to_int() to convert a string to an integer
+      before performing the encryption.  Note that the values of n and e
+      that you use here must be the public key of the recipient you
+      intend to send your message to.
+
+      """
+      message_length_check(n, msg)
+
+      message = string_to_int(msg)
+      ciphertext = pow(message, e, n)
+
+      return ciphertext
+
+  def decode_msg(cipher, n, d):
+      """Decode ciphertext encrypted using your public key.  The value
+      of n and d must be your own values generated above.
+
+      """
+      message = pow(cipher, d, n)
+      plaintext = int_to_string(message)
+
+      return plaintext
 #+end_src
