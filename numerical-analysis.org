@@ -1,7 +1,7 @@
-# Created 2025-06-20 Fri 12:41
+# Created 2025-06-23 Mon 13:56
 #+title: Numerical Analysis
 #+author: Jesse Oldroyd
-* <2025-06-19 Thu>
+* <2025-06-18 Wed>
 Many mathematical models are written in terms of *differential equations*.
 These are equations that describe how some quantity $y$ changes over time (or
 position, or...).  A simple example of such an equation is $y' = y$ where
@@ -19,7 +19,7 @@ some of these approaches here.
  information about how $y$ changes (it's differential equation!) and by
  choosing a step-size $h$.  Euler's Method can be effective on equations of
  the form $y' = f(t, y), y(t_0) = y_0$.
-* <2025-06-20 Fri>
+* <2025-06-19 Thu>
 *Example*: A car leaves Buckhannon at 12 p.m.  You happen to know how fast the
 car is traveling at 1 p.m., 2 p.m., 3 p.m. and 4 p.m.:
 | time        | 12 |  1 |  2 |  3 |  4 |
@@ -52,7 +52,7 @@ Method.
   def f(t, y):
       return y
 #+end_src
-
+* <2025-06-23 Mon>
 Numerical analysis is generally concerned with how to efficiently solve or
 approximate solutions of mathematical problems.  Efficiency does not just mean
 accuracy!  We are also concerned with computational costs and ease of
@@ -77,3 +77,40 @@ difficult if not impossible to solve exactly.
 #+end_src
 
 #+results: 
+
+The above algorithm has two very useful characteristics: given that our
+function is "continuous" we can estimate how far away we are from a solution
+at each step (the *error*).  Also, we know that the error is approaching $0$,
+which means that our algorithm produces values that will at worst get
+arbitrarily close to the solution.
+
+*Example*: How many steps of the above algorithm must be used to guarantee
+ that we are within $0.01$ of the true value of the solution of $x^3 - 3x + 1
+   = 0$ in the interval $[1, 2]$?
+
+Recursive procedures like the above are common in numerical analysis, as they
+allow us to take a complicated problem and break it into simpler versions of
+itself.  Many important mathematical functions and constants can also be
+defined recursively.
+
+*Example*: The *factorial function*, $n!$, is defined recursively as follows:
+1. if $n > 1$ then $n! = n(n-1)!$.  This is a /recurrence relation/.
+2. if $n = 0$ then $0! = 1$.  This is a /base case/.
+Implement this function in Python.
+
+*Example*: The $n$th Fibonacci number is given by the recurrence relation
+$$F_n = F_{n-1} + F_{n-2}$$
+with base cases $F_0 = F_1 = 1$.  Write a Python function that implements this
+definition to compute the $n$th Fibonacci number.
+
+*Example*: (taken from /Tea Time for Numerical Analysis/, pg. 37) What is the
+ minimum number of moves required to solve the Tower of Hanoi puzzle using
+ three disks?  What is the minimum number of moves to solve the puzzle if it
+ involves four disks instead?  You can use the web app located [[https://www.mathsisfun.com/games/towerofhanoi.html][here]] to help
+ you answer this question.
+
+Recursion also shows up quite a bit in mathematical arguments.  In this case,
+we call it /induction/.
+
+*Example*: Explain why any polygon can be /triangulated/, i.e., divided into
+ triangles.
