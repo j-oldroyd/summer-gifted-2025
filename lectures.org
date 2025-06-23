@@ -83,6 +83,9 @@
      write this as an appropriate binomial coefficient.
 
     *Example*: Find a formula for $\binom{n}{k}$.
+** <2025-06-23 Mon>
+   Counting hands in poker is a good test and application of counting with
+   combinations.
 * Cryptography
   :PROPERTIES:
   :EXPORT_FILE_NAME: cryptography
@@ -682,6 +685,37 @@
     *Example*: Create a one-way function $f(x)$ as follows: let $n = 894847$ and
      define $f(x) = x^3 \mod n$ for $x$ in $\mathbb{Z}_n$.  Use this function to
      determine which other group in class was given the same number as you.
+* Number Theory
+** <2025-06-23 Mon>
+  The mathematical basis for the cryptographic systems we looked at was modular
+  arithmetic.  This type of arithmetic is based on computing remainders, and so
+  prime numbers play an essential part here.
+
+  Perhaps the two most important facts we use when working with modular
+  arithmetic are the following: modular arithmetic respects regular addition;
+  and modular arithmetic respects regular multiplication.  Both facts follow
+  from the division algorithm.
+
+  *Example*: Let $n$ be a nonnegative integer and let $a = b\mod n$ and $c =
+   d\mod n$.  Show that $a+c = b+d \mod n$.
+
+  /Answer/: Remainders!
+
+  When we looked at RSA public key cryptography, we needed to be able to find
+  two integers $e$ and $d$ such that $ed = 1 \mod \phi$.  If you look at the
+  code we used for that, we only required that $\gcd(e, \phi) = 1$.  In
+  particular, if two numbers have no common factors aside from $1$, then we can
+  find this "modular inverse."
+
+  *Example*: Find $3^{-1}\mod 8$ and $4^{-1}\mod 6$ if possible.
+
+  The existence of these inverses can be proved in general using /Bezout's
+  Identity/, which states the following:
+  #+begin_quote
+  If $a,b$ are integers and $\gcd(a,b) = d$, then there exist integers $r,s$
+  such that $ra+sb = d$.
+  #+end_quote
+
 * Numerical Analysis
   :PROPERTIES:
   :EXPORT_FILE_NAME: numerical-analysis
@@ -704,7 +738,7 @@
    information about how $y$ changes (it's differential equation!) and by
    choosing a step-size $h$.  Euler's Method can be effective on equations of
    the form $y' = f(t, y), y(t_0) = y_0$.
-** <2025-06-20 Fri>
+** <2025-06-19 Thu>
   *Example*: A car leaves Buckhannon at 12 p.m.  You happen to know how fast the
   car is traveling at 1 p.m., 2 p.m., 3 p.m. and 4 p.m.:
   | time        | 12 |  1 |  2 |  3 |  4 |
@@ -738,7 +772,7 @@
         return y
 
   #+end_src
-
+<2025-06-23 Mon>
   Numerical analysis is generally concerned with how to efficiently solve or
   approximate solutions of mathematical problems.  Efficiency does not just mean
   accuracy!  We are also concerned with computational costs and ease of
