@@ -686,6 +686,9 @@
      define $f(x) = x^3 \mod n$ for $x$ in $\mathbb{Z}_n$.  Use this function to
      determine which other group in class was given the same number as you.
 * Number Theory
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: number-theory
+  :END:
 ** <2025-06-23 Mon>
   The mathematical basis for the cryptographic systems we looked at was modular
   arithmetic.  This type of arithmetic is based on computing remainders, and so
