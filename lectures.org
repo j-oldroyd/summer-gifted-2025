@@ -788,11 +788,14 @@
     *Example*: Create a one-way function $f(x)$ as follows: let $n = 894847$ and
      define $f(x) = x^3 \mod n$ for $x$ in $\mathbb{Z}_n$.  Use this function to
      determine which other group in class was given the same number as you.
+* Graph Theory
+** <2025-06-24 Tue>
+
 * Number Theory
   :PROPERTIES:
   :EXPORT_FILE_NAME: number-theory
   :END:
-** <2025-06-23 Mon>
+** <2025-06-24 Tue>
   The mathematical basis for the cryptographic systems we looked at was modular
   arithmetic.  This type of arithmetic is based on computing remainders, and so
   prime numbers play an essential part here.
@@ -821,6 +824,20 @@
   If $a,b$ are integers and $\gcd(a,b) = d$, then there exist integers $r,s$
   such that $ra+sb = d$.
   #+end_quote
+
+  Inverses can be used to solve /congruence equations/ of the form $ax = b\mod
+  n$.
+
+  *Example*: Solve the following congruences for $x$:
+  1. $5x = 8 \mod 9$.
+  2. $4x - 5 = 12 \mod 7$.
+  3. $6x = 8 \mod 10$.
+  4. $6x = 7 \mod 10$.
+
+  *Example*: An *affine cipher* is a cipher of the form $ax + b \mod 26$, where
+  $x\in \mathbb{Z}_26$.  This is a generalization of the Caesar cipher, which is
+  an affine cipher with $a = 1$.  Suppose we decide to set up our own affine
+  cipher.  What should be true about $a$?
 
 * Numerical Analysis
   :PROPERTIES:
