@@ -1,4 +1,4 @@
-# Created 2025-06-23 Mon 13:56
+# Created 2025-06-24 Tue 12:54
 #+title: Numerical Analysis
 #+author: Jesse Oldroyd
 * <2025-06-18 Wed>
@@ -87,6 +87,19 @@ arbitrarily close to the solution.
 *Example*: How many steps of the above algorithm must be used to guarantee
  that we are within $0.01$ of the true value of the solution of $x^3 - 3x + 1
    = 0$ in the interval $[1, 2]$?
+* <2025-06-24 Tue>
+Another tool for finding roots (i.e., solutions of equations of the form $f(x)
+  = 0$) is /fixed-point iteration/.  This involves computing a function
+successively on its own values to solve an equation of the form $f(x) = x$.
+
+*Example*: Try to solve the equation $\cos(x) = x$ by fixed-point iteration.
+
+/Answer/:
+#+begin_src python :results output :exports both
+  import numpy as np
+#+end_src
+
+#+results: 
 
 Recursive procedures like the above are common in numerical analysis, as they
 allow us to take a complicated problem and break it into simpler versions of
