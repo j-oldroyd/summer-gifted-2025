@@ -1,0 +1,51 @@
+# Created 2025-06-24 Tue 14:50
+#+title: Graph Theory
+#+author: Jesse Oldroyd
+* <2025-06-24 Tue>
+A *graph* is a network of vertices (also called nodes) and edges.  The edges
+indicate relationships between vertices.
+
+*Example*: A social network is a graph whose vertices are people.  What
+ should the edges represent?
+
+In graph theory we're interested in the structures of graphs and their
+properties.  One important type of property is whether or not we can travel
+all of the edges without retracing any.
+
+*Activity 1*: For the given graphs, try to find a way to trace the graph
+ without tracing over an edge more than once.  See if you can find the
+ pattern!  There is one, but it's a little tricky to spot...
+| Graph | start | end |
+|-------+-------+-----|
+|       |       |     |
+|       |       |     |
+|       |       |     |
+|       |       |     |
+|       |       |     |
+|       |       |     |
+|       |       |     |
+Another important property is /planarity/, which means that we can draw the
+graph without intersecting edges.
+
+*Activity 2*: For the given graphs, try to determine if they are planar or
+ not.
+| Graph | Planar? |
+|-------+---------|
+|       |         |
+|       |         |
+|       |         |
+|       |         |
+|       |         |
+|       |         |
+|       |         |
+*Activity 3*: The vertices, edges and faces of a planar graph satisfy a
+ certain relationship.  Can you find it?
+| Graph | V | E | F |
+|-------+---+---+---|
+|       |   |   |   |
+|       |   |   |   |
+|       |   |   |   |
+|       |   |   |   |
+|       |   |   |   |
+|       |   |   |   |
+|       |   |   |   |
