@@ -789,6 +789,9 @@
      define $f(x) = x^3 \mod n$ for $x$ in $\mathbb{Z}_n$.  Use this function to
      determine which other group in class was given the same number as you.
 * Graph Theory
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: graph-theory
+  :END:
 ** <2025-06-24 Tue>
    A *graph* is a network of vertices (also called nodes) and edges.  The edges
    indicate relationships between vertices.
@@ -976,6 +979,17 @@
   *Example*: How many steps of the above algorithm must be used to guarantee
    that we are within $0.01$ of the true value of the solution of $x^3 - 3x + 1
    = 0$ in the interval $[1, 2]$?
+
+  Another tool for finding roots (i.e., solutions of equations of the form $f(x)
+  = 0$) is /fixed-point iteration/.  This involves computing a function
+  successively on its own values to solve an equation of the form $f(x) = x$.
+
+  *Example*: Try to solve the equation $\cos(x) = x$ by fixed-point iteration.
+
+  /Answer/:
+  #+begin_src python :results output :exports both
+    import numpy as np
+  #+end_src
 
   Recursive procedures like the above are common in numerical analysis, as they
   allow us to take a complicated problem and break it into simpler versions of
