@@ -979,7 +979,7 @@
   *Example*: How many steps of the above algorithm must be used to guarantee
    that we are within $0.01$ of the true value of the solution of $x^3 - 3x + 1
    = 0$ in the interval $[1, 2]$?
-
+** <2025-06-24 Tue>
   Another tool for finding roots (i.e., solutions of equations of the form $f(x)
   = 0$) is /fixed-point iteration/.  This involves computing a function
   successively on its own values to solve an equation of the form $f(x) = x$.
