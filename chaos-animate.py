@@ -4,7 +4,7 @@ import numpy as np
 import random
 
 # Set up initial parameters for THE CHAOS GAME
-n = 4  # number of sides
+n = 3  # number of sides
 r = .5  # how far along path
 
 # Draw points on the polygon

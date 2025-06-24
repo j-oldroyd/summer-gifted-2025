@@ -110,6 +110,85 @@
 ** <2025-06-23 Mon>
    Counting hands in poker is a good test and application of counting with
    combinations.
+** <2025-06-24 Tue>
+   A *generating function* for a sequence of numbers is a polynomial (or series)
+   whose coefficients are exactly the terms of the sequence in order.  For
+   example, the generating function of the sequence $\binom{n}{k}$ is given by
+   $(1+x)^n$.  For example, expanding $(1 + x)^4$ gives a polynomial whose
+   coefficients are all the values of $\binom{4}{k}$.
+   #+begin_src python :results output :exports both
+     import sympy as sp
+     x = sp.Symbol('x')  # Create the variable x
+
+     print(sp.expand((1 + x)**4))  # Coefficients are 4 choose k
+   #+end_src
+
+   #+RESULTS:
+   : x**4 + 4*x**3 + 6*x**2 + 4*x + 1
+
+   *Example*: Find $\binom{7}{3}$ by computing $(1 + x)^7$.
+
+   *Example*: Simplify $x^5 + 5x^4 + 10x^3 + 10x^2 + 5x + 1$.
+
+   To see why $(1 + x)^n$ is the generating function for $\binom{n}{k}$, it
+   might be helpful to consider all of the possible products of $(x + y)^n$.
+
+   Many counting problems can be solved by considering their generating
+   functions instead.  For one example, we can look at the problem of making 22
+   cents in change from two nickels, three dimes and seven pennies.  The
+   generating function for this counting problem has three different components,
+   one for each type of object we're using in our count:
+   | coin    | generating function                |
+   |---------+------------------------------------|
+   | pennies | $1 + x + x^2 + x^3 + \cdots + x^7$ |
+   | nickels | $1 + x^5 + x^{10}$                 |
+   | dimes   | $1 + x^{10} + x^{20}$              |
+   If we multiply these polynomials together, we get the generating function for
+   this problem:
+   #+begin_src python :results output :exports both
+     import sympy as sp
+     x = sp.Symbol('x')
+
+     # Create polynomials
+     pennies = 1 + x + x**2 + x**3 + x**4 + x**5 + x**6 + x**7
+     nickels = 1 + x**5 + x**10
+     dimes = 1 + x**10 + x**20
+
+     generating_function = pennies * nickels * dimes
+
+     print(f"The generating function is {sp.expand(generating_function)}.")
+     print(f"The coefficient of x^22 is {sp.expand(generating_function).coeff(x, 22)}.")
+   #+end_src
+
+   #+RESULTS:
+   : The generating function is x**37 + x**36 + x**35 + x**34 + x**33 + 2*x**32 + 2*x**31 + 2*x**30 + x**29 + x**28 + 3*x**27 + 3*x**26 + 3*x**25 + 2*x**24 + 2*x**23 + 3*x**22 + 3*x**21 + 3*x**20 + x**19 + x**18 + 3*x**17 + 3*x**16 + 3*x**15 + 2*x**14 + 2*x**13 + 3*x**12 + 3*x**11 + 3*x**10 + x**9 + x**8 + 2*x**7 + 2*x**6 + 2*x**5 + x**4 + x**3 + x**2 + x + 1.
+   : The coefficient of x^22 is 3.
+   : 9
+
+   *Example*: The largest amount of change you can make using seven pennies, two
+   nickels and three dimes is 37 cents.  What is the largest amount of change
+   you can make with these coins in more than one way?
+
+   *Example*: Count the number of ways there are to make 22 cents using pennies,
+   nickels and dimes.
+
+   We can also use generating functions to find values of /sequences/, lists of
+   numbers defined by some equation.  For example, the generating function of
+   the Fibonacci numbers $0, 1, 1, 2, 3, 5, 8, 13, \ldots$ is given by
+   $$F(x) = \frac{x}{1 - x - x^2}.$$
+   You can check using SymPy (or calculus!) that the coefficients of this
+   fraction are actually the Fibonacci numbers:
+   #+begin_src python :results output :exports both
+     import sympy as sp
+     x = sp.Symbol('x')
+
+     F = x/(1 - x - x**2)
+     print(f"The fifth Fibonacci number is {F.series(x, 0, 10).coeff(x, 5)}.")
+   #+end_src
+
+   #+RESULTS:
+   : The fifth Fibonacci number is 5.
+
 * Cryptography
   :PROPERTIES:
   :EXPORT_FILE_NAME: cryptography
