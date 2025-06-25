@@ -142,17 +142,20 @@
    |---------+------------------------------------|
    | pennies | $1 + x + x^2 + x^3 + \cdots + x^7$ |
    | nickels | $1 + x^5 + x^{10}$                 |
-   | dimes   | $1 + x^{10} + x^{20}$              |
+   | dimes   | $1 + x^{10} + x^{20} + x^{30}$     |
    If we multiply these polynomials together, we get the generating function for
    this problem:
    #+begin_src python :results output :exports both
+     # You can paste this code into the Thonny editor window to run it.  If
+     # you use the shell instead (the Thonny window with ">>>"), then you
+     # should run each line of code as a separate command.
      import sympy as sp
      x = sp.Symbol('x')
 
      # Create polynomials
-     pennies = 1 + x + x**2 + x**3 + x**4 + x**5 + x**6 + x**7
+     pennies = sum([x**k for k in range(8)])
      nickels = 1 + x**5 + x**10
-     dimes = 1 + x**10 + x**20
+     dimes = 1 + x**10 + x**20 + x**30
 
      generating_function = pennies * nickels * dimes
 
@@ -161,16 +164,37 @@
    #+end_src
 
    #+RESULTS:
-   : The generating function is x**37 + x**36 + x**35 + x**34 + x**33 + 2*x**32 + 2*x**31 + 2*x**30 + x**29 + x**28 + 3*x**27 + 3*x**26 + 3*x**25 + 2*x**24 + 2*x**23 + 3*x**22 + 3*x**21 + 3*x**20 + x**19 + x**18 + 3*x**17 + 3*x**16 + 3*x**15 + 2*x**14 + 2*x**13 + 3*x**12 + 3*x**11 + 3*x**10 + x**9 + x**8 + 2*x**7 + 2*x**6 + 2*x**5 + x**4 + x**3 + x**2 + x + 1.
+   : The generating function is x**47 + x**46 + x**45 + x**44 + x**43 + 2*x**42 + 2*x**41 + 2*x**40 + x**39 + x**38 + 3*x**37 + 3*x**36 + 3*x**35 + 2*x**34 + 2*x**33 + 3*x**32 + 3*x**31 + 3*x**30 + x**29 + x**28 + 3*x**27 + 3*x**26 + 3*x**25 + 2*x**24 + 2*x**23 + 3*x**22 + 3*x**21 + 3*x**20 + x**19 + x**18 + 3*x**17 + 3*x**16 + 3*x**15 + 2*x**14 + 2*x**13 + 3*x**12 + 3*x**11 + 3*x**10 + x**9 + x**8 + 2*x**7 + 2*x**6 + 2*x**5 + x**4 + x**3 + x**2 + x + 1.
    : The coefficient of x^22 is 3.
-   : 9
-
+** <2025-06-25 Wed>
    *Example*: The largest amount of change you can make using seven pennies, two
-   nickels and three dimes is 37 cents.  What is the largest amount of change
+   nickels and three dimes is 47 cents.  What is the largest amount of change
    you can make with these coins in more than one way?
 
-   *Example*: Count the number of ways there are to make 22 cents using pennies,
-   nickels and dimes.
+   *Example*: Suppose that you have one box $10$ red chips in it, another box
+   with $5$ green chips, and yet another box with $8$ blue chips.  In how many
+   ways can you select $15$ chips total where at least $2$ are red and at least
+   $3$ are blue?
+
+   /Answer/: Use generating functions!
+   #+begin_src python :results output :exports both
+     # You can paste this code into the Thonny editor or the shell.  If you
+     # paste into the shell, you should run one command at a time.  import
+     # sympy as sp x = sp.Symbol('x')
+
+     # You will need to enter the correct functions for each of the
+     # following colors.  The current values are just placeholders to make
+     # sure that this code runs without error.  red = 1 green = 1 blue = 1
+
+     gen_func = red * green * blue print(f"The generating function is
+     {sp.expand(gen_func)}.")
+   #+end_src
+
+   These problems can get a little more complicated if we remove some
+   restrictions.
+
+   *Example*: Count the number of ways there are to make 22 cents using any
+   number of pennies, nickels and dimes.
 
    We can also use generating functions to find values of /sequences/, lists of
    numbers defined by some equation.  For example, the generating function of
@@ -188,7 +212,6 @@
 
    #+RESULTS:
    : The fifth Fibonacci number is 5.
-
 * Cryptography
   :PROPERTIES:
   :EXPORT_FILE_NAME: cryptography
