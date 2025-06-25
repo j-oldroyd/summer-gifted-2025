@@ -831,7 +831,7 @@
     pattern!  There is one, but it's a little tricky to spot...
     | Graph | start | end |
     |-------+-------+-----|
-    |       |       |     |
+    | /     | <     | >   |
     |       |       |     |
     |       |       |     |
     |       |       |     |
@@ -845,7 +845,7 @@
     not.
     | Graph | Planar? |
     |-------+---------|
-    |       |         |
+    | /     | <>      |
     |       |         |
     |       |         |
     |       |         |
@@ -856,7 +856,7 @@
     certain relationship.  Can you find it?
     | Graph | V | E | F |
     |-------+---+---+---|
-    |       |   |   |   |
+    | /     | < |   | > |
     |       |   |   |   |
     |       |   |   |   |
     |       |   |   |   |
@@ -880,6 +880,11 @@
     | $c_7$    | $c_2, c_3, c_6$      |
 
 
+   The previous problem can be solved using graph colorings.  The goal with
+   setting up a graph coloring is to use as few colors as possible.
+
+   *Example*: How many colors do you need to color a planar graph?  Try some
+    examples!
 * Number Theory
   :PROPERTIES:
   :EXPORT_FILE_NAME: number-theory
