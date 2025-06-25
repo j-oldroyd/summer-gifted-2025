@@ -863,6 +863,23 @@
     |       |   |   |   |
     |       |   |   |   |
     |       |   |   |   |
+** <2025-06-25 Wed>
+   *Example*: A chemical company sells seven different chemicals to consumers.
+    Some of these chemicals are known to interact dangerously with each other,
+    and so they shouldn't be in the same shipment.  The chemicals and
+    interactions are given by the following table:
+    | chemical | interactions         |
+    |----------+----------------------|
+    | /        | <>                   |
+    | $c_1$    | $c_2, c_4, c_6$      |
+    | $c_2$    | $c_1, c_7$           |
+    | $c_3$    | $c_4, c_5, c_6, c_7  |
+    | $c_4$    | $c_1, c_3$           |
+    | $c_5$    | $c_3, c_6$           |
+    | $c_6$    | $c_1, c_3, c_5, c_7$ |
+    | $c_7$    | $c_2, c_3, c_6$      |
+
+
 * Number Theory
   :PROPERTIES:
   :EXPORT_FILE_NAME: number-theory
