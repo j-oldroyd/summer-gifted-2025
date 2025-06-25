@@ -881,7 +881,7 @@
    d\mod n$.  Show that $a+c = b+d \mod n$.
 
   /Answer/: Remainders!
-
+** <2025-06-25 Wed>
   When we looked at RSA public key cryptography, we needed to be able to find
   two integers $e$ and $d$ such that $ed = 1 \mod \phi$.  If you look at the
   code we used for that, we only required that $\gcd(e, \phi) = 1$.  In
@@ -910,6 +910,14 @@
   $x\in \mathbb{Z}_26$.  This is a generalization of the Caesar cipher, which is
   an affine cipher with $a = 1$.  Suppose we decide to set up our own affine
   cipher.  What should be true about $a$?
+
+  We can set up addition and multiplication tables for $\mathbb{Z}_n$, but these
+  don't behave quite the same way as multiplication tables for the integers.
+
+  *Example*: Set up multiplication tables for $\mathbb{Z}_5$ and $\mathbb{Z}_6$.
+   Feel free to use Python to handle any modular arithmetic for you!
+
+  *Example*: What are all possible powers of the elements of $\mathbb{Z}_5$?
 
 * Numerical Analysis
   :PROPERTIES:
