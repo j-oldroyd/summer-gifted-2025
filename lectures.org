@@ -936,8 +936,9 @@
   We can set up addition and multiplication tables for $\mathbb{Z}_n$, but these
   don't behave quite the same way as multiplication tables for the integers.
 
-  *Example*: Set up multiplication tables for $\mathbb{Z}_5$ and $\mathbb{Z}_6$.
-   Feel free to use Python to handle any modular arithmetic for you!
+  *Example*: Set up multiplication tables for $\mathbb{Z}_5$ and
+   $\mathbb{Z}_{26}$.  Feel free to use Python to handle any modular arithmetic
+   for you!
 
   *Example*: What are all possible powers of the elements of $\mathbb{Z}_5$?
 
