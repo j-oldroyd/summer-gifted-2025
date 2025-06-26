@@ -1183,6 +1183,9 @@
   *Example*: Explain why any polygon can be /triangulated/, i.e., divided into
    triangles.
 * Review
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: review
+  :END:
 ** Chaos Game (5th-6th graders only)
    5th-6th graders will want to review the following:
    - using the provided ~chaos-animate.py~ file to generate fractal shapes using

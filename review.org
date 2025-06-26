@@ -1,0 +1,46 @@
+# Created 2025-06-26 Thu 12:05
+#+title: Review
+#+author: Jesse Oldroyd
+* Chaos Game (5th-6th graders only)
+5th-6th graders will want to review the following:
+- using the provided ~chaos-animate.py~ file to generate fractal shapes using
+  the chaos game.
+- describe how the fractals produced change for different values of $r$.
+- estimate the dimension of a fractal shape using the equation $N = 2^d$.
+* Combinatorics (7th-8th graders only)
+7th-8th graders will want to review the following topics:
+- Counting using permutations and combinations, i.e., using the formulas for
+  $_nP_k$ and $_nC_k = \binom{n}{k}$.  These formulas will be provided on the
+  test.
+- Setting up rows of Pascal's triangle and reading off values of $_nC_k$
+  using the triangle.
+- Using Pascal's triangle to multiply out $(1+x)^n$.
+- Setting up generating functions to solve counting problems, and using a
+  given generating function to read off the answer to a counting problem.
+* Cryptography (all grades)
+All groups will want to review encryption and decryption using Caesar ciphers
+and Vigenere ciphers.  Vigenere cipher tables will be provided to all groups
+as well.
+** 9th-12th graders
+9th-12th graders will also want to review RSA public key cryptography.  In
+particular, given a public key $(n, e)$ you will be asked to encrypt a
+"message" using the public key and explain how such a message would be
+decrypted.
+* Graph Theory (5th-6th graders only)
+5th-6th graders will want to review the following topics:
+- Given a graph, find a path that traces through all edges exactly once or
+  explain why it's impossible.
+- Explain why a given graph is planar or not, and the significance of $V-E+F$
+  for planar graphs.
+- Find colorings of a given graph.
+* Number Theory (9th-12th graders only)
+9th-12th graders will want to review computations involving modular
+arithmetic, including how to simplify expressions involving modular
+arithmetic by hand (though you are welcome to check work using Python).
+* Numerical Analysis (9th-12th graders only)
+9th-12th graders will want to review the following topics:
+- using the bisection method for finding roots of equations of the form $f(x)
+       = 0$.
+- using fixed-point iteration for finding solutions of equations of the form
+  $f(x) = x$.
+- finding quantities defined recursively.
