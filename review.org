@@ -1,4 +1,4 @@
-# Created 2025-06-26 Thu 12:05
+# Created 2025-06-26 Thu 12:07
 #+title: Review
 #+author: Jesse Oldroyd
 * Chaos Game (5th-6th graders only)
@@ -6,7 +6,7 @@
 - using the provided ~chaos-animate.py~ file to generate fractal shapes using
   the chaos game.
 - describe how the fractals produced change for different values of $r$.
-- estimate the dimension of a fractal shape using the equation $N = 2^d$.
+- estimate the dimension of a fractal shape using the equation $N = s^d$.
 * Combinatorics (7th-8th graders only)
 7th-8th graders will want to review the following topics:
 - Counting using permutations and combinations, i.e., using the formulas for
