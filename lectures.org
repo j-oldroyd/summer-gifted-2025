@@ -179,16 +179,25 @@
    /Answer/: Use generating functions!
    #+begin_src python :results output :exports both
      # You can paste this code into the Thonny editor or the shell.  If you
-     # paste into the shell, you should run one command at a time.  import
-     # sympy as sp x = sp.Symbol('x')
+     # paste into the shell, you should run one command at a time.
+     import sympy as sp
+     x = sp.Symbol('x')
 
      # You will need to enter the correct functions for each of the
-     # following colors.  The current values are just placeholders to make
-     # sure that this code runs without error.  red = 1 green = 1 blue = 1
+     # following colors.
+     red = sum([x**k for k in range(2, 11)])
+     green = sum([x**k for k in range(6)])
+     blue = sum([x**k for k in range(3, 9)])
 
-     gen_func = red * green * blue print(f"The generating function is
-     {sp.expand(gen_func)}.")
+     gen_func = red * green * blue
+     print(f"The generating function is {sp.expand(gen_func)}.")
+     print(f"The answer is given by the coefficient of x**15, which is \
+     {gen_func.expand().coeff(x, 15)}.")
    #+end_src
+
+   #+RESULTS:
+   : The generating function is x**23 + 3*x**22 + 6*x**21 + 10*x**20 + 15*x**19 + 21*x**18 + 26*x**17 + 30*x**16 + 33*x**15 + 34*x**14 + 33*x**13 + 30*x**12 + 26*x**11 + 21*x**10 + 15*x**9 + 10*x**8 + 6*x**7 + 3*x**6 + x**5.
+   : The answer is given by the coefficient of x**15, which is 33.
 
    These problems can get a little more complicated if we remove some
    restrictions.
